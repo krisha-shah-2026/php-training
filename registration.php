@@ -32,7 +32,9 @@
 
  
     <label for="profile_image">Profile Image:</label>
-    <input type="file" id="profile_image" name="profile_image" accept="image/*"><br><br>
+    <input type="file" id="profile_image" name="profile_image" accept="uploads/*"><br><br>
+    <!-- <form action="upload.php" method="post" enctype="multipart/form-data"> -->
+        
 
     <!-- Address -->
     <label for="address">Address:</label><br>
