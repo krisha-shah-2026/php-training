@@ -30,20 +30,39 @@ $id = $_GET['id'];
     Phone: <input type="number" name="phone" value="<?php echo $sql2['phone_no']; ?>"><br><br>
  
     Gender:
-    <input type="radio" name="gender" value="Male" <?php if($sql2['gender']=="Male") echo "checked"; ?>>Male
-    <input type="radio" name="gender" value="Female" <?php if($sql2['gender']=="Female") echo "checked"; ?>>Female<br><br>
- 
+    <input type="radio" name="gender" value="male" <?php if($sql2['gender']=="male") echo "checked"; ?>>Male
+    <input type="radio" name="gender" value="female" <?php if($sql2['gender']=="female") echo "checked"; ?>>Female<br><br>
+     <input type="radio" name="gender" value="other" <?php if($sql2['gender']=="other") echo "checked"; ?>>other<br><br>
+   <label for="profile_picture">Profile Picture:</label>
+   <?php $image_path = "/php-training/uploads/" . $sql2['profile_image'];
+
+   
+     $image_src = '/php-training/uploads/'. htmlspecialchars($sql2['profile_image']);;//<?php echo $sql2['profile_image'];
+     echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";?></ -->
+ <input type="file" name="profile_image" id="profile_image"><br>
+
+
+
+  <!-- echo "h";exit(); -->
     Hobby:
-    <?php $hobby= explode(",", $sql2['hobby']); ?>
-    <input type="checkbox" name="hobby[]" value="Reading" <?php if(in_array("Reading",$hobby)) echo "checked"; ?>>Reading
-    <input type="checkbox" name="hobby[]" value="Music" <?php if(in_array("Music",$hobby)) echo "checked"; ?>>Music
-    <input type="checkbox" name="hobby[]" value="Sports" <?php if(in_array("Sports",$hobby)) echo "checked"; ?>>Sports<br><br>
- 
+    
+     <?php 
+    $hobby = explode(',', $sql2['hobby']); 
+    
+
+   ?>
+    <input type="checkbox" name="hobbies[]" value="reading" <?php if(in_array("reading",$hobby)) echo "checked"; ?>>Reading
+    <input type="checkbox" name="hobbies[]" value="gaming" <?php if(in_array("gaming",$hobby)) echo "checked"; ?>>Gaming
+    <input type="checkbox" name="hobbies[]" value="coding" <?php if(in_array("coding",$hobby)) echo "checked"; ?>>Coding<br><br> 
+ <!-- echo "h";exit(); --><?php
+    $hobbies = $_POST['hobbies'] ?? [];
+    $hobby=implode(",", $hobbies);
+    ?>
     Country:
     <select name="Country">
-        <option <?php if($sql2['Country']=="India") echo "selected"; ?>>India</option>
-        <option <?php if($sql2['Country']=="USA") echo "selected"; ?>>USA</option>
-        <option <?php if($sql2['Country']=="UK") echo "selected"; ?>>UK</option>
+        <option <?php if($sql2['Country']=="India") echo "selected"; ?>>USA</option>
+        <option <?php if($sql2['Country']=="USA") echo "selected"; ?>>CANADA</option>
+        <option <?php if($sql2['Country']=="UK") echo "selected"; ?>>INDIA</option>
     </select><br><br>
  
     <input type="submit" name="update" value="Update">
@@ -52,16 +71,7 @@ $id = $_GET['id'];
 include 'database.php';
 
 $id = $_GET['id'];
-// if (isset($_GET['user_id'])) {
-//     $id = $_GET['user_id'];
-// } else {
-//     // Handle the case where the user_id is missing
-//     // e.g., redirect to an error page or a default page
-//     // header('Location: error.php'); 
-//     // exit;
-//     echo "Error: User ID not provided.";
-// }
-// $sql2=[];
+
  $sql2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM user_table WHERE user_id=$id"));
 //  echo "ghghgh"; die ();
 if (isset($_POST['update'])) {
@@ -72,36 +82,14 @@ if (isset($_POST['update'])) {
     $confirm_password = $_POST['confirm_password'];
     
     $address = $_POST['address'];
-    $phone   = $_POST['phone'];
+    $phone   = $_POST['phone_no'];
     $gender = $_POST['gender'] ?? '';
-//     if (isset($_POST['hobby'])) {
-//     $hobby = $_POST['hobby'];
-// } else {
-//     $hobby = [];
-//     $country = $_POST['country'];
+    $profile_image =$_POST['profile_image']; 
+    $country = $_POST['Country'];
 
-    // echo $hobby;
-    
-    
-    //  if ($password !== $confirm_password) {
-    //     die("Password do not match!");
-    // }
-    // $password = password_hash($password, PASSWORD_DEFAULT);
-
-    //     mysqli_query($conn, "UPDATE `user_table` SET 
-    //     'first_name`='$first_name',`last_name`='$last_name',`email`='$email`,
-    //     `password`='$password`,`confirm_password`='$confirm_password`,`profile_image`='null`,
-    //     `address`='$address`,`phone_no`='$phone`,`gender`='$gender`,`hobby`='$hobby`,`Country`='$country` 
-    // WHERE user_id=$id");}
-
-    if (is_array($hobby)) {
-    $hobby_string = implode(', ', $hobby);
-} else {
-    // If it's already a string (or null), use it directly
-    $hobby_string = $hobby;
-}
-
-// Prepare your query with the new string variable
+    // $hobbies = $_POST['hobbies'] ?? [];
+    //  $hobby=implode(',', $hobbies);
+    // // echo" h"; exit();
  mysqli_query($conn, "UPDATE user_table SET 
     `first_name` = '$first_name', 
     `last_name` = '$last_name', 
@@ -111,6 +99,7 @@ if (isset($_POST['update'])) {
     `address` = '$address', 
     `phone_no` = '$phone', 
     `gender` = '$gender', 
+    `profile_image` = '$profile_image',
     `hobby` = '$hobby', 
     `country` = '$country'
     WHERE user_id = '$id'");

@@ -19,8 +19,7 @@
   </thead>
   <tbody>
     <?php
-    // SQL query to fetch all users from your table (replace 'user_table' with your actual table name)
-    // Also, make sure 'id' is the name of your primary key column
+   
     $sql1 = "SELECT * FROM user_table";
     $result = $conn->query($sql1);
 
@@ -39,14 +38,14 @@
         
 
         $image_path = "/php-training/uploads/" . $row['profile_image'];
-  //echo $image_path;
-        echo "<td><img src='uploads/'" . htmlspecialchars($row['profile_image']) . "' alt='Profile' width='50'></td>";
-            echo "<td>" . htmlspecialchars($row['address']) . "</td>";
+
+     $image_src = '/php-training/uploads/' . htmlspecialchars($row['profile_image']);
+        echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";
+    
+
+        echo "<td>" . htmlspecialchars($row['address']) . "</td>";
         echo "<td>" . htmlspecialchars($row['phone_no']) . "</td>";
-        // echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
-        // Handle profile image display (assuming 'profile_path' is the column name)
-        // echo "<td><img src='" . htmlspecialchars($row['profile_path']) . "' alt='Profile' width='50'></td>";
-        // echo "<td>" . htmlspecialchars($row['address']) . "</td>";
+      
          echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
         echo "<td>" . htmlspecialchars($row['hobby']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Country']) . "</td>";
