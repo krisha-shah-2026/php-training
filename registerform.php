@@ -68,7 +68,7 @@
     </select><br><br>
 
 
-    <input type="submit" name="submit" value="Register">
+    <input type="submit" name="submit" value="register">
 </form>
 
 </body>

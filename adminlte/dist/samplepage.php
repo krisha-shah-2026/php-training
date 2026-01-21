@@ -1,24 +1,7 @@
 <?php include_once('includes/header.php'); ?>
 
   <?php include_once('includes/sidebar.php'); ?>
- 
-
-    
- 
- <!-- <div class="container-fluid">
-          begin::Start Navbar Links-->
-          <!-- <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
-                <i class="bi bi-list"></i>
-              </a>
-            </li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
-          </ul> --> 
-        
-    <!-- <body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
-    <!--begin::App Main-->
+ <!--begin::App Main-->
     <main class="app-main">
       <!--begin::App Content Header-->
       <div class="app-content-header">
@@ -246,12 +229,7 @@
       <!--end::App Content-->
     </main>
     <!--end::App Main-->
-
-
-
-
-
-<?php include_once('includes/footer.php'); ?>
+ <?php include_once('includes/footer.php'); ?>
 
 
 
