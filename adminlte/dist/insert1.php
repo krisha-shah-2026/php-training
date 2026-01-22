@@ -36,7 +36,7 @@ if (isset($_POST['submit']))
 // INSERT INTO `user_table`(`user_id`, `first_name`, `last_name`, `email`, `password`, `confirm_password`, `profile_image`, `address`, `phone_no`, `gender`, `hobby`, `Country`) VALUES 
    
     $sql = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`, `confirm_password`, `profile_image`, `address`, `phone_no`, `gender`, `hobby`, `country`) VALUES 
-('$first_name','$last_name','$email','$password','$confirm_password','$img_name','$address','$phone','$gender','$hobby ','$country')";
+('$first_name','$last_name','$email','$password','$confirm_password','$img_name','$address','$phone','$gender','$hobby','$country')";
 
     if (mysqli_query($conn, $sql)){
         echo "inserted succesfully";

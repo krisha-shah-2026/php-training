@@ -1,21 +1,11 @@
 <?php include 'db.php';?>
-
-
-
-
 <?php
-
-
-
- 
-$id = $_GET['id'];
-          // $id = $_GET['id'] ?? null;
- //$sql2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE user_id=$id"));
-  // echo "ghghgh"; die ();
+// $id = $_GET['id'];
+          
 if (isset($_POST['update']))
-  //  echo$_POST['update']; exit();
+
    {//echo"h"; exit();
-  
+    $id = $_POST['id']; 
         
     $first_name   = $_POST['first_name'];
     // echo $_POST['first_name']; exit();
@@ -33,8 +23,27 @@ if (isset($_POST['update']))
     //  echo $_POST['phone_no'] ; exit();
     $gender = $_POST['gender'] ?? '';
       // echo $_POST['gender']; exit();
-    $profile_image = $_POST['profile_image']; 
-  // echo $profile_image; exit();
+   $old_image = $_POST['old_image'];
+$new_image = $_FILES['new_image']['name'];
+ 
+if (!empty($new_image)) {
+ 
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($new_image);
+ 
+    move_uploaded_file($_FILES['new_image']['tmp_name'], $target_file);
+ 
+    if (!empty($old_image) && file_exists($target_dir . $old_image)) {
+        unlink($target_dir . $old_image);
+    }
+ 
+    $profile_image = $new_image;
+ 
+} else {
+    $profile_image = $old_image;
+}
+  $hobbies = $_POST['hobbies'] ?? [];
+    $hobby=implode(",",$hobbies);
     $country = $_POST['country'];
 // echo $country; exit();
     // $hobbies = $_POST['hobbies'] ?? [];
@@ -56,7 +65,6 @@ if (isset($_POST['update']))
 
     //header("Location: process_form1.php");
       
-}
-?><script>
-  window.location.href = 'http://localhost/php-training/process_form1.php';
-</script>
+}header("Location: process_form1.php");
+      
+?>

@@ -8,7 +8,7 @@ include 'database.php';
 
 $id = $_GET['id'];
  $sql2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM user_table WHERE user_id=$id"));?>
- <form action="update.php" method="POST">
+ <form action="update.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $id; ?>">
     First Name: <input type="text" name="first_name" value="<?php echo $sql2['first_name']; ?>"><br><br>
     Last Name: <input type="text" name="last_name" value="<?php echo $sql2['last_name']; ?>"><br><br>
@@ -28,7 +28,11 @@ $id = $_GET['id'];
 
      $image_src = '/php-training/uploads/'. htmlspecialchars($sql2['profile_image']);//<?php echo $sql2['profile_image'];
      echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";?></ -->
-    <input type="file" name="profile_image" id="profile_image"><br>
+    <!-- <input type="file" name="profile_image" id="profile_image"><br> -->
+    <!-- <input type="hidden" name="old_image" value=""> -->
+        <!-- <input type="file" name="new_image"><br></br> -->
+      <input type="hidden" name="old_image" value="<?= $sql2['profile_image'] ?>">
+ <input type="file" name="new_image"><br></br>
     Hobby:
     <?php
         $hobby = explode(",",$sql2['hobby']);

@@ -42,11 +42,31 @@
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
     />
- <div class="card card-warning card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header"><div class="card-title"> register Form</div></div>
+ <!-- <div class="card card-warning card-outline mb-4">
+                  begin::Header-->
+                  <!-- <div class="card-header"><div class="card-title"> register Form</div></div>  -->
                   <!--end::Header-->
                   <!--begin::Form-->
+
+ <div class="col-md-6">
+                <!--begin::Quick Example-->
+                <div class="card card-primary card-outline mb-4">
+                  <!--begin::Header-->
+                  <div class="card-header"><div class="card-title">register form</div></div>
+                  
+                  <head>
+    <style>
+        .error {
+            color: red;
+            background-color: #ffe5e5;
+            border: 1px solid red;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
                 <body>
 
 
@@ -54,36 +74,114 @@
 
     <!-- The 'action' attribute should point to the server-side script that will process the form data (e.g., register.php, /api/register) -->
     <!-- The 'method' attribute specifies how to send the data (POST is recommended for sensitive info like passwords) -->
-    <form action="insert1.php" method="POST">
+     <!-- <form action="insert1.php" method="POST">
         <div>
             <label for="name">Full Name:</label>
-            <!-- Input for the user's name -->
+            
             <input type="text" id="name" name="name" required>
         </div>
         <br>
         <div>
             <label for="email">Email Address:</label>
-            <!-- Input type 'email' provides basic email validation -->
+            
             <input type="email" id="email" name="email" required>
         </div>
         <br>
         <div>
             <label for="password">Password:</label>
-            <!-- Input type 'password' masks the characters as you type -->
+            
             <input type="password" id="password" name="password" required minlength="8">
         </div>
         <br>
         <div>
             <label for="confirm_password">Confirm Password:</label>
-            <!-- Input type 'password' for confirmation -->
+           
             <input type="password" id="confirm_password" name="confirm_password" required minlength="8">
         </div>
         <br>
         <div>
-            <!-- The submit button sends the form data to the server -->
+          
             <button type="submit">Register</button>
         </div>
     </form>
 
 </body>
-</html>
+</html> --> <form action="insert2.php" method="POST" onsubmit="return validateForm()">
+    <!-- <div> -->
+      <div class="card-body">
+                      <div class="mb-3">
+         <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required><br><br>
+ <!-- <input type="text" id="name" name="Name" placeholder="Enter your full name" /> -->
+            <!-- <span id="name-error" class="error-message"></span> -->
+   </div>
+   <div class="mb-3">
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required><br><br>
+
+    </div>
+    <br>
+    <div>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <br>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required minlength="8">
+    </div>
+    <br>
+    <div>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required minlength="8">
+    </div>
+    <br>
+    <!-- Element to display error messages -->
+    <div id="error-message" class="error"></div>
+    <br>
+    <div>
+        <input type="submit" name="submit" value="submit" class="btn btn-primary">
+    </div>
+</form>
+
+<script>
+    function validateForm() {
+        // Get input values
+       
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirm_password = document.getElementById('confirm_password').value;
+        const errorMessage = document.getElementById('error-message');
+
+        // Reset error messages
+        errorMessage.textContent = '';
+        errorMessage.style.display = 'none';
+
+        // 1. Check for empty spaces in the 'name' field
+        
+        // 2. Check for empty spaces in the 'email' field
+        if (email.trim() === '') {
+            errorMessage.textContent = 'Email Address cannot be empty or contain only spaces.';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+        
+        // 3. Check for empty spaces in the 'password' field
+        if (password.trim() === '') {
+            errorMessage.textContent = 'Password cannot be empty or contain only spaces.';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+
+        // 4. Check if passwords match
+        if (password !== confirm_password) {
+            errorMessage.textContent = 'Passwords do not match.';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+
+        // If all checks pass, the form will submit
+        alert('Form submitted successfully! (If PHP file exists)');
+        return true;
+    }
+</script>

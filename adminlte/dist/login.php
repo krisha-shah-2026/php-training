@@ -41,15 +41,18 @@
       href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
-    />
- <div class="card card-warning card-outline mb-4">
+    /><div class="col-md-6">
+                <!--begin::Quick Example-->
+                <div class="card card-primary card-outline mb-4">
                   <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">login  Form</div></div>
-                  <!--end::Header-->
+                  <div class="card-header"><div class="card-title">login form</div></div>
+ 
                   <!--begin::Form-->
                 
-                    <form action="insert1.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-    <label for="email">Email:</label>
+                    <form action="insert2.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <div class="card-body">
+                      <div class="mb-3">
+     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
     <span id="emailError" style="color: red;"></span><br><br>
 
@@ -57,46 +60,62 @@
     <input type="password" id="password" name="password" required minlength="8">
     <span id="passwordError" style="color: red;"></span><br><br>
 
-    <input type="submit" class="btn btn-warning" value="log in">
-      <button type="submit"class="btn btn-warning">Sign Up</button>
+    <input type="submit" class="btn btn-primary" value="log in">
+    
+      <button onclick="window.location.href='register.php'" class="btn btn-primary"> Register</button>
 </form>
-
 <script>
 function validateForm() {
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    let emailError = document.getElementById('emailError');
-    let passwordError = document.getElementById('passwordError');
-    let isValid = true;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var emailError = document.getElementById("emailError");
+  var passwordError = document.getElementById("passwordError");
 
-    emailError.textContent = '';
-    passwordError.textContent = '';
+  // Reset error messages
+  emailError.innerHTML = "";
+  passwordError.innerHTML = "";
 
-    // Email format validation (basic regex)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        emailError.textContent = 'Please enter a valid email address.';
-        isValid = false;
-    }
+  var isValid = true;
 
-    // Password length and complexity validation
-    if (password.length < 8) {
-        passwordError.textContent = 'Password must be at least 8 characters long.';
-        isValid = false;
-    }
-    if (!/[A-Z]/.test(password)) {
-        passwordError.textContent = 'Password must contain at least one uppercase letter.';
-        isValid = false;
-    }
-    if (!/[a-z]/.test(password)) {
-        passwordError.textContent = 'Password must contain at least one lowercase letter.';
-        isValid = false;
-    }
-    if (!/[0-9]/.test(password)) {
-        passwordError.textContent = 'Password must contain at least one number.';
-        isValid = false;
-    }
+  // Validate email
+  if (email === "") {
+    emailError.innerHTML = "Email is required";
+    isValid = false;
+  } else if (!isValidEmail(email)) {
+    emailError.innerHTML = "Invalid email format";
+    isValid = false;
+  }
 
-    return isValid; // Prevents form submission if false
+  // Validate password
+  if (password === "") {
+    passwordError.innerHTML = "Password is required";
+    isValid = false;
+  } else if (password.length < 8) {
+    passwordError.innerHTML = "Password must be at least 8 characters long";
+    isValid = false;
+  }
+
+  return isValid;
 }
-</script>
+// 
+// if (isset($_POST['submit'])) {
+ 
+//     $password = $_POST['password'];
+//     $confirm_password = $_POST['confirm_password'];
+ 
+//     $passwordPattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
+ 
+//     if (!preg_match($passwordPattern, $password)) {
+//         echo "<span style='color:red;'>Invalid password format</span>";
+//     } elseif ($password !== $confirm_password) {
+//         echo "<span style='color:red;'>Passwords do not match</span>";
+//     } else {
+//         // Secure password hash
+//         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+//         echo "<span style='color:green;'>Password is valid</span>";
+ 
+//         // Save $hashedPassword in database
+//     }
+// }
+?>
+</body>
