@@ -2,7 +2,7 @@
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="./css/adminlte.css" as="style" />
+    <link rel="preload" href="./includes/css/adminlte.css" as="style" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -27,7 +27,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./css/adminlte.css" />
+    <link rel="stylesheet" href="./includes/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link
@@ -50,8 +50,8 @@
                   <div class="card-header"><div class="card-title">Employee registration Form</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                
-                    <form action="insert1.php" method="POST" enctype="multipart/form-data">
+                <body>
+    <form action="insert1.php" method="POST" enctype="multipart/form-data">
 
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" required><br><br>
@@ -126,9 +126,9 @@
                     <!--end::Footer-->
                   </form>
                   <!--end::Form-->
-                
+           
 
-
+</body>
 
 
 

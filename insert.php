@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $phone   = $_POST['phone_no'];
     $gender  = $_POST['gender'] ?? null;
-   
+    
     $hobby   = !empty($_POST["hobbies"]) ? implode(",", $_POST['hobbies']) : null;
     $country = $_POST['country'] ?? null;
 
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 // INSERT INTO `user_table`(`user_id`, `first_name`, `last_name`, `email`, `password`, `confirm_password`, `profile_image`, `address`, `phone_no`, `gender`, `hobby`, `Country`) VALUES 
    
     $sql = "INSERT INTO `user_table`(`first_name`, `last_name`, `email`, `password`, `confirm_password`, `profile_image`, `address`, `phone_no`, `gender`, `hobby`, `Country`) VALUES 
-('$first_name','$last_name','$email','$password','$confirm_password','$img_name','$address','$phone','$gender','$hobby ','$country')";
+('$first_name','$last_name','$email','$password','$confirm_password','$img_name','$address','$phone','$gender','$hobby','$country')";
 
     if (mysqli_query($conn, $sql)){
         echo "inserted succesfully";

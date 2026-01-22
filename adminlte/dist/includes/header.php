@@ -40,7 +40,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="/assets/img/user1-128x128.jpg"
+                        src="./includes/assets/img/user1-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -66,7 +66,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="/assets/img/user8-128x128.jpg"
+                        src="./includes/assets/img/user8-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -92,7 +92,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="/assets/img/user3-128x128.jpg"
+                        src="./includes/assets/img/user3-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -212,7 +212,7 @@
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="./css/adminlte.css" as="style" />
+    <link rel="preload" href="./includes/css/adminlte.css" as="style" />
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <link
@@ -239,7 +239,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./css/adminlte.css" />
+    <link rel="stylesheet" href="./includes/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link
