@@ -1,3 +1,9 @@
+<?php 
+
+
+
+include 'db.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <meta name="supported-color-schemes" content="light dark" />
@@ -58,7 +64,7 @@
     <style>
         .error {
             color: red;
-            background-color: #ffe5e5;
+            background-color: #797676;
             border: 1px solid red;
             padding: 10px;
             margin-bottom: 15px;
@@ -67,50 +73,12 @@
         }
     </style>
 </head>
-                <body>
-
-
-    
-
-    <!-- The 'action' attribute should point to the server-side script that will process the form data (e.g., register.php, /api/register) -->
-    <!-- The 'method' attribute specifies how to send the data (POST is recommended for sensitive info like passwords) -->
-     <!-- <form action="insert1.php" method="POST">
-        <div>
-            <label for="name">Full Name:</label>
-            
-            <input type="text" id="name" name="name" required>
-        </div>
-        <br>
-        <div>
-            <label for="email">Email Address:</label>
-            
-            <input type="email" id="email" name="email" required>
-        </div>
-        <br>
-        <div>
-            <label for="password">Password:</label>
-            
-            <input type="password" id="password" name="password" required minlength="8">
-        </div>
-        <br>
-        <div>
-            <label for="confirm_password">Confirm Password:</label>
-           
-            <input type="password" id="confirm_password" name="confirm_password" required minlength="8">
-        </div>
-        <br>
-        <div>
-          
-            <button type="submit">Register</button>
-        </div>
-    </form>
-
-</body>
-</html> --> <form action="insert2.php" method="POST" onsubmit="return validateForm()">
+               
+ <form action="insert2.php" method="POST" onsubmit="return validateForm()">
     <!-- <div> -->
       <div class="card-body">
-                      <div class="mb-3">
-         <label for="first_name">First Name:</label>
+     <div class="mb-3">
+    <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" required><br><br>
  <!-- <input type="text" id="name" name="Name" placeholder="Enter your full name" /> -->
             <!-- <span id="name-error" class="error-message"></span> -->
@@ -124,11 +92,13 @@
     <div>
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="email" required>
+     
     </div>
     <br>
     <div>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required minlength="8">
+      <!-- <?php $password = $_POST['password'] ?? '';?> -->
     </div>
     <br>
     <div>
@@ -143,12 +113,11 @@
         <input type="submit" name="submit" value="submit" class="btn btn-primary">
     </div>
 </form>
+</html>
 
 <script>
     function validateForm() {
-        // Get input values
        
-        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const confirm_password = document.getElementById('confirm_password').value;
         const errorMessage = document.getElementById('error-message');
@@ -157,16 +126,15 @@
         errorMessage.textContent = '';
         errorMessage.style.display = 'none';
 
-        // 1. Check for empty spaces in the 'name' field
         
         // 2. Check for empty spaces in the 'email' field
-        if (email.trim() === '') {
-            errorMessage.textContent = 'Email Address cannot be empty or contain only spaces.';
-            errorMessage.style.display = 'block';
-            return false;
-        }
+        // if (email.trim() === '') {
+        //     errorMessage.textContent = 'Email Address cannot be empty or contain only spaces.';
+        //     errorMessage.style.display = 'block';
+        //     return false;
+        // }
         
-        // 3. Check for empty spaces in the 'password' field
+       
         if (password.trim() === '') {
             errorMessage.textContent = 'Password cannot be empty or contain only spaces.';
             errorMessage.style.display = 'block';
@@ -181,7 +149,7 @@
         }
 
         // If all checks pass, the form will submit
-        alert('Form submitted successfully! (If PHP file exists)');
+        // alert('Form submitted successfully! (done)');
         return true;
     }
 </script>

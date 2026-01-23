@@ -49,7 +49,7 @@
  
                   <!--begin::Form-->
                 
-                    <form action="insert2.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <form action="samplepage.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
     <div class="card-body">
                       <div class="mb-3">
      <label for="email">Email:</label>
@@ -58,13 +58,42 @@
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required minlength="8">
-    <span id="passwordError" style="color: red;"></span><br><br>
-
-    <input type="submit" class="btn btn-primary" value="log in">
     
-      <button onclick="window.location.href='register.php'" class="btn btn-primary"> Register</button>
+    <?php
+// User login script (e.g., login.php)
+//  echo $sql2['password'];
+// // 1. Get the password the user submitted in the login form
+// $password = $_POST['password'];
+
+// // 2. Retrieve the stored, hashed password from your database for the user
+// //    (This value would come from your DB query, e.g., $user_data['password_hash'])
+// // $hashed_password_from_db = '$2y$10$..............................'; // Example hash, replace with real data
+
+// // 3. Use password_verify() to check the plain-text password against the hash
+// if (password_verify($password, $sql)) {
+//     // Passwords match!
+//     echo "success";
+//     // Start a session, log the user in, and redirect them to a secure area
+// //     session_start();
+// //     $_SESSION['user_id'] = $sql; // Store user data in session
+// //     echo 'Password is valid! Logging you in...';
+// //     // header('Location: dashboard.php');
+// // } else {
+// //     // Passwords do not match
+// //     // Display an error message to the user
+// //     echo 'Invalid password.';
+// }<br></br>
+?><br> </br>
+
+    <input type="submit" name= "submit" class="btn btn-primary" value="log in">
+    
+      <button onclick="window.location.href='register.php'" class="btn btn-primary"> Register</button>if you does not register then click here
 </form>
 <script>
+function isValidEmail(email) {
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 function validateForm() {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
@@ -116,6 +145,6 @@ function validateForm() {
  
 //         // Save $hashedPassword in database
 //     }
-// }
+ header("Location: samplepage.php")
 ?>
 </body>

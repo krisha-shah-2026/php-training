@@ -1,4 +1,6 @@
+<?php include_once('includes/header.php'); ?>
 
+  <?php include_once('includes/sidebar.php'); ?>
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <meta name="supported-color-schemes" content="light dark" />
@@ -130,7 +132,7 @@
 
 </body>
 
-
+<?php include_once('includes/footer.php'); ?>
 
 
 

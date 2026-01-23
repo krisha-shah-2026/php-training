@@ -1,5 +1,9 @@
 <?php include 'db.php';?>
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // $id = $_GET['id'];
           
 if (isset($_POST['update']))
@@ -46,17 +50,11 @@ if (isset($_POST['update']))
     `last_name` = '$last_name', 
     `email` = '$email', 
     `password` = '$password', 
-    `confirm_password` = '$confirm_password', 
-    -- `address` = '$address', 
-    -- `phone_no` = '$phone', 
-    -- `gender` = '$gender', 
-    -- `profile_image` = '$profile_image',
-    -- `hobby` = '$hobby', 
-    -- `country` = '$country'
+    `confirm_password` = '$confirm_password' 
     WHERE user_id = '$id'");
 
-    //header("Location: process_form1.php");
+    header("Location: process_form2.php");
       
-}header("Location: process_form2.php");
+ }//header("Location: process_form2.php");
       
 ?>
