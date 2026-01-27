@@ -1,4 +1,9 @@
-<?php include 'db.php';?>
+<?php
+ include 'auth.php';
+
+ include 'db.php';?>
+
+
 <?php include_once('includes/header.php'); ?>
 
   <?php include_once('includes/sidebar.php'); ?>
@@ -75,5 +80,12 @@
     
     ?>
   </tbody>
-</table>
+    </tbody>
+                      </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+
 <?php include_once('includes/footer.php'); ?>

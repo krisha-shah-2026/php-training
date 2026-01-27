@@ -1,150 +1,96 @@
+<?php
+session_start();
+include 'db.php'; // make sure this connects to your database
+
+if (isset($_POST['submit'])) {
+
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    // Prepare statement to get user info
+    $sql = "SELECT user_id, email, password FROM users WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $user = mysqli_fetch_assoc($result);
+
+    if (!$user) {
+        // Email not registered
+        $_SESSION['login_error'] = "Email not registered";
+        header("Location: login.php");
+        exit;
+    }
+
+    if (!password_verify($password, $user['password'])) {
+        // Incorrect password
+        $_SESSION['login_error'] = "Incorrect password";
+        header("Location: login.php");
+        exit;
+    }
+
+    // Successful login
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['user_email'] = $user['email'];
+
+    header("Location: samplepage.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="./includes/css/adminlte.css" as="style" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-      integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
-      crossorigin="anonymous"
-      media="print"
-      onload="this.media='all'"
-    />
-    <!--end::Fonts-->
-    <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
-      crossorigin="anonymous"
-    />
-    <!--end::Third Party Plugin(OverlayScrollbars)-->
-    <!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-      crossorigin="anonymous"
-    />
-    <!--end::Third Party Plugin(Bootstrap Icons)-->
-    <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./includes/css/adminlte.css" />
-    <!--end::Required Plugin(AdminLTE)-->
-    <!-- apexcharts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
-      crossorigin="anonymous"
-    />
-    <!-- jsvectormap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
-      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
-      crossorigin="anonymous"
-    /><div class="col-md-6">
-                <!--begin::Quick Example-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">login form</div></div>
- 
-                  <!--begin::Form-->
-                
-                    <form action="samplepage.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-    <div class="card-body">
-                      <div class="mb-3">
-     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <span id="emailError" style="color: red;"></span><br><br>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="./includes/css/adminlte.css">
+</head>
+<body>
+<div class="col-md-6">
+    <div class="card card-primary card-outline mb-4">
+        <div class="card-header">
+            <div class="card-title">Login Form</div>
+        </div>
+        <div class="card-body">
+            <?php
+            if (isset($_SESSION['login_error'])) {
+                echo '<div style="color:red;">'.$_SESSION['login_error'].'</div>';
+                unset($_SESSION['login_error']);
+            }
+            ?>
+            <form action="" method="POST" onsubmit="return validateForm()">
+                <div class="mb-3">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required minlength="8">
+                </div>
+                <input type="submit" name="submit" class="btn btn-primary" value="Log In">
+                <button type="button" onclick="window.location.href='register.php'" class="btn btn-secondary">
+                    Register
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required minlength="8">
-    
-    <?php
-// User login script (e.g., login.php)
-//  echo $sql2['password'];
-// // 1. Get the password the user submitted in the login form
-// $password = $_POST['password'];
-
-// // 2. Retrieve the stored, hashed password from your database for the user
-// //    (This value would come from your DB query, e.g., $user_data['password_hash'])
-// // $hashed_password_from_db = '$2y$10$..............................'; // Example hash, replace with real data
-
-// // 3. Use password_verify() to check the plain-text password against the hash
-// if (password_verify($password, $sql)) {
-//     // Passwords match!
-//     echo "success";
-//     // Start a session, log the user in, and redirect them to a secure area
-// //     session_start();
-// //     $_SESSION['user_id'] = $sql; // Store user data in session
-// //     echo 'Password is valid! Logging you in...';
-// //     // header('Location: dashboard.php');
-// // } else {
-// //     // Passwords do not match
-// //     // Display an error message to the user
-// //     echo 'Invalid password.';
-// }<br></br>
-?><br> </br>
-
-    <input type="submit" name= "submit" class="btn btn-primary" value="log in">
-    
-      <button onclick="window.location.href='register.php'" class="btn btn-primary"> Register</button>if you does not register then click here
-</form>
 <script>
-function isValidEmail(email) {
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
 function validateForm() {
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
-  var emailError = document.getElementById("emailError");
-  var passwordError = document.getElementById("passwordError");
-
-  // Reset error messages
-  emailError.innerHTML = "";
-  passwordError.innerHTML = "";
-
-  var isValid = true;
-
-  // Validate email
-  if (email === "") {
-    emailError.innerHTML = "Email is required";
-    isValid = false;
-  } else if (!isValidEmail(email)) {
-    emailError.innerHTML = "Invalid email format";
-    isValid = false;
-  }
-
-  // Validate password
-  if (password === "") {
-    passwordError.innerHTML = "Password is required";
-    isValid = false;
-  } else if (password.length < 8) {
-    passwordError.innerHTML = "Password must be at least 8 characters long";
-    isValid = false;
-  }
-
-  return isValid;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    if (email === "" || password === "") {
+        alert("Please fill in all fields.");
+        return false;
+    }
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters.");
+        return false;
+    }
+    return true;
 }
-// 
-// if (isset($_POST['submit'])) {
- 
-//     $password = $_POST['password'];
-//     $confirm_password = $_POST['confirm_password'];
- 
-//     $passwordPattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
- 
-//     if (!preg_match($passwordPattern, $password)) {
-//         echo "<span style='color:red;'>Invalid password format</span>";
-//     } elseif ($password !== $confirm_password) {
-//         echo "<span style='color:red;'>Passwords do not match</span>";
-//     } else {
-//         // Secure password hash
-//         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-//         echo "<span style='color:green;'>Password is valid</span>";
- 
-//         // Save $hashedPassword in database
-//     }
- header("Location: samplepage.php")
-?>
+</script>
 </body>
+</html>
+

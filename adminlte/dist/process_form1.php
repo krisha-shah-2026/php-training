@@ -1,4 +1,6 @@
-<?php include 'db.php';?>
+<?php 
+
+include 'db.php';?>
 <?php include_once('includes/header.php'); ?>
 
   <?php include_once('includes/sidebar.php'); ?>
@@ -24,9 +26,6 @@
                         
                         </tr>
                       </thead>
-                      
-                  <!-- /.card-body -->
-                
   <?php
     $sql1 = "SELECT * FROM users";
     $result = $conn->query($sql1);
@@ -74,5 +73,10 @@
     
     ?>
   </tbody>
-</table>
+                      </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
 <?php include_once('includes/footer.php'); ?>

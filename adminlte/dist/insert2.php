@@ -1,40 +1,49 @@
-<?php 
 
+<?php 
+session_start();
 include 'db.php';
+
 // Display all errors on screen for debugging a specific script
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 //  echo 'h'; exit();
 if (isset($_POST['submit']))
     //   echo $_POST['submit']; exit();
      { // $id = $_POST['id']; 
-    // $first_name   = $_POST['first_name'];
+    $first_name   = $_POST['first_name'];
     // // echo '$first_name'; exit();
-    // $last_name   = $_POST['last_name'];
+    $last_name   = $_POST['last_name'];
     // $email  = $_POST['email'];
     // $password   = $_POST['password'];
     // $confirm_password  = $_POST['confirm_password'];
-    $first_name = $_POST['first_name'] ?? '';
-$last_name = $_POST['last_name'] ?? '';
-$email = $_POST['email'] ?? '';
+    // $first_name = $_POST['first_name'] ?? '';
+    // $last_name = $_POST['last_name'] ?? '';
+     $email   = $_POST['email'];
+        $phone_no = $_POST['phone_no'] ?? '';
+        $_SESSION['old'] = [
+        'first_name' => $first_name,
+        'last_name'  => $last_name,
+        'email'      => $email,
+        'phone_no'   => $phone_no,
+    ];
+
+    $sql = "SELECT email FROM users WHERE email = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_store_result($stmt);
+
+if (mysqli_stmt_num_rows($stmt) > 0) {
+    $_SESSION['email_error'] = "Email already exists";
+    header("Location: register.php");
+    exit;
+}
+     
  
       
-$sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
-if (mysqli_num_rows($sql) > 0) {
-    echo "This email is already registered.";
-} else {
-      if ($sql) {
-        // Success logic
-        header("Location: success.php"); // Redirect to success page
-        exit();
-    } else {
-        // Handle general INSERT failure (not duplicate entry, but other issue)
-        die("Error: " . mysqli_error($conn));
-    }
-}
-}
+
+
     // Check if an error message exists in the session
     // if (isset($_SESSION['error_message'])) {
     //     // Display the error message
@@ -85,11 +94,26 @@ $confirm_password = $_POST['confirm_password'] ?? '';
 ('$first_name','$last_name','$email','$password','$confirm_password')";
 
     if (mysqli_query($conn, $sql)){
-        echo "inserted succesfully";
-    }else{echo "not inserted";
+    //     echo "inserted succesfully";}
+    // else{echo "not inserted";
+            
+         unset($_SESSION['old']);
+        $_SESSION['success'] = "Registration successful!";
+        header("Location: process_form2.php");
+        exit;
+    } else {
+        $_SESSION['error'] = "Registration failed!";
+        header("Location: register.php");
+        exit;
     }
-    header("Location: process_form2.php");
-   ?>
+
+
+
     
+//     unset($_SESSION['old']);
+
+//     header("Location: register.php");
+//     exit;
     
+// }
 //  header("Location: process_form2.php");

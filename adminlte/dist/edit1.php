@@ -56,21 +56,23 @@ $id = $_GET['id'];
       href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
-    /><div class="card card-warning card-outline mb-4">
+    />
+                <div class="card card-warning card-outline mb-4">
                   <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">Employee edit Form</div></div>
+                  <div class="card-header"><div class="card-title">Employee registration Form</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
+                <body>
 
 <form action="update1.php" method="post">
      <input type="hidden" name="id" value="<?php echo $id; ?>">
-    First Name: <input type="text" name="first_name" value="<?php echo $sql2['first_name']; ?>"><br><br>
-    Last Name: <input type="text" name="last_name" value="<?php echo $sql2['last_name']; ?>"><br><br>
-    Email: <input type="email" name="email" value="<?php echo $sql2['email']; ?>"><br><br>
+    First Name: <input type="text" name="first_name" value="<?php echo $sql2['first_name']; ?>" class="form-control"><br><br>
+    Last Name: <input type="text" name="last_name" value="<?php echo $sql2['last_name']; ?>" class="form-control"><br><br>
+    Email: <input type="email" name="email" value="<?php echo $sql2['email']; ?>" class="form-control"><br><br>
     Password: <input type="password" name="password" value="<?php echo $sql2['password']; ?>"><br><br>
-    Confirm Password: <input type="confirm_password" name="confirm_password" value="<?php echo $sql2['confirm_password']; ?>"><br><br>
+    Confirm Password: <input type="confirm_password" name="confirm_password" value="<?php echo $sql2['confirm_password']; ?>" class="form-control" ><br><br>
  
-    Address: <textarea name="address"><?php echo $sql2['address']; ?></textarea><br><br>
+    Address: <textarea name="address" class="form-control"><?php echo $sql2['address']; ?></textarea><br><br>
     Phone: <input type="number" name="phone_no" value="<?php echo $sql2['phone_no']; ?>"><br><br>
  
     Gender:
@@ -101,8 +103,18 @@ $id = $_GET['id'];
         <option <?php if($sql2['country']=="USA") echo "selected"; ?>>CANADA</option>
         <option <?php if($sql2['country']=="UK") echo "selected"; ?>>INDIA</option>
     </select><br><br>
- 
-    <input type="submit" name="update" value="Update">
-</form>
+                     <div class="card-footer">
+                      
+                      <!-- <button type="submit" class="btn btn-warning"  name="submit" value="register">register</button>  -->
+                      <!-- <button type="submit" class="btn float-end">Cancel</button> -->
+                           <input type="submit" name="update" class="btn btn-warning" value="Update">
+
+                    </div>
+                    <!--end::Footer-->
+                  </form>
+                 </div>
+
+    <!-- <input type="submit" name="update" value="Update"> -->
+
  
 <?php include_once('includes/footer.php'); ?>
