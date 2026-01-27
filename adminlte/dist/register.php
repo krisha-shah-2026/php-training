@@ -130,6 +130,7 @@ include 'db.php';
     <div id="error-message" class="error"></div>
     <br>
     <div>
+
         <input type="submit" name="submit" value="submit" class="btn btn-primary">
     </div>
 </form>

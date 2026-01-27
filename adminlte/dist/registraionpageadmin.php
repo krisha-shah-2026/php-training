@@ -63,7 +63,7 @@ session_start();
     />
             <head>
               <style>
-                <style>
+               
   .text-danger {
     color: red;
     font-size: 14px;
@@ -112,16 +112,7 @@ session_start();
     echo '<p style="color:red;">' . $_SESSION['error'] . '</p>';
     unset($_SESSION['error']);
 }?> 
-
-    <!-- <?php if (!empty($passwordErr)) { ?>
-    <span style="color:red; font-size:14px;">
-        <?php echo $passwordErr; ?>
-    </span>
-<?php } ?> -->
-
-
- 
-    <label for="profile_image">Profile Image:</label>
+  <label for="profile_image">Profile Image:</label>
     <input type="file" id="profile_image" name="profile_image" accept="uploads/*" required ><br><br>
     <!-- <form action="upload.php" method="post" enctype="multipart/form-data"> -->
         
@@ -160,7 +151,7 @@ session_start();
 
     <label for="hobby1"> Reading</label><br>
     <input type="checkbox" id="hobby2" name="hobbies[]" value="gaming" <?= in_array('gaming', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
->
+
     <label for="hobby2"> Gaming</label><br>
     <input type="checkbox" id="hobby3" name="hobbies[]" value="coding"   <?= in_array('coding', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
 

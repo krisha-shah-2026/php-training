@@ -1,1 +1,1 @@
-<?php header("Location: process_form2.php");
+<?php header("Location: process_form1.php");

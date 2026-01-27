@@ -41,29 +41,7 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
 }
      
  
-      
-
-
-    // Check if an error message exists in the session
-    // if (isset($_SESSION['error_message'])) {
-    //     // Display the error message
-    //     echo '<p style="color: red;">' . htmlspecialchars($_SESSION['error_message']) . '</p>';
-    //     // Unset the session variable so it doesn't show up on a fresh visit
-    //     unset($_SESSION['error_message']);
-    // }
-    // // You can also check for a success message if needed
-    // if (isset($_SESSION['success_message'])) {
-    //     echo '<p style="color: green;">' . htmlspecialchars($_SESSION['success_message']) . '</p>';
-    //     unset($_SESSION['success_message']);
-    // }
-// $sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
-// if (mysqli_num_rows($sql) > 0) {
-//     echo "This email is already registered.";
-// } else {
-//     // Proceed with insertion
-// }
-
-// User registration script (e.g., register.php)
+    
 
 $password = $_POST['password']; // Get the plain-text password from the registration form
 
@@ -84,7 +62,21 @@ $confirm_password = $_POST['confirm_password'] ?? '';
     // $hobby   = !empty($_POST["hobbies"]) ? implode(",", $_POST['hobbies']) : null;
     // $country = $_POST['country'] ?? null;
 
- 
+//  $image = $_FILES['image']['name'] ?? null;
+//  $imageTmp = $_FILES['image']['tmp_name'] ?? null;
+//   $image_src = '' . htmlspecialchars($row['profile_image']);
+// echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";
+
+// Define the default image path
+// $defaultImage = 'screenshot/Screenshot from 2025-12-29 12-55-30.png';
+
+// // Check if image exists in database and is not empty
+// $image_src = (!empty($row['profile_image'])) ? $row['profile_image'] : $defaultImage;
+
+// // Sanitize the final path
+// $image_src = htmlspecialchars($image_src);
+
+// echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";
     // $img_name = $_FILES['profile_image']['name'];
     // $tmp_name = $_FILES['profile_image']['tmp_name'];
     // move_uploaded_file($tmp_name, "uploads/" . $img_name);
@@ -94,18 +86,13 @@ $confirm_password = $_POST['confirm_password'] ?? '';
 ('$first_name','$last_name','$email','$password','$confirm_password')";
 
     if (mysqli_query($conn, $sql)){
-    //     echo "inserted succesfully";}
-    // else{echo "not inserted";
-            
+      echo "inserted succesfully";}
+     else{echo "not inserted";
+     }
          unset($_SESSION['old']);
-        $_SESSION['success'] = "Registration successful!";
-        header("Location: process_form2.php");
-        exit;
-    } else {
-        $_SESSION['error'] = "Registration failed!";
-        header("Location: register.php");
-        exit;
-    }
+
+    header("Location: process_form2.php");
+    exit;
 
 
 

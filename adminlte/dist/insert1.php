@@ -1,5 +1,8 @@
-
-
+<?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 
 
 
@@ -9,34 +12,30 @@
 <?php 
 session_start();
 include 'db.php';
-// Display all errors on screen for debugging a specific script
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+
 
 //  echo 'h'; exit();
 if (isset($_POST['submit']))
-    //  echo 'h'; exit();
+    //  echo $_POST; exit();
     {
-    $first_name   = $_POST['first_name'];
+    $first_name   = $_POST['first_name']?? '';
     
-    $last_name   = $_POST['last_name'];
-    $email   = $_POST['email'];
+    $last_name   = $_POST['last_name']?? '';
+    $email   = $_POST['email']?? '';
     $phone_no = $_POST['phone_no'] ?? '';
     $gender  = $_POST['gender'] ?? null;
-       $country = $_POST['country'] ?? null;
-$hobby = $_POST['hobbies'] ?? []; // array
+    $country = $_POST['country'] ?? null;
+    $hobby = $_POST['hobbies'] ?? []; 
 
         $_SESSION['old'] = [
         'first_name' => $first_name,
         'last_name'  => $last_name,
         'email'      => $email,
         'phone_no'   => $phone_no,
-    'gender'     => $gender,
-     'hobby'      => $hobby,
+        'gender'     => $gender,
+        'hobby'      => $hobby,
         'country'    => $country
-
-    ];
+];
 
     // $email   = $_POST['email'];
 $sql = "SELECT email FROM users WHERE email = ?";
@@ -51,7 +50,7 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
     exit;
 }
 
-    // $password    = $_POST['password'];
+ $password    = $_POST['password'];
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $confirm_password = $_POST['confirm_password'] ?? '';
@@ -61,8 +60,8 @@ $confirm_password = $_POST['confirm_password'] ?? '';
     exit;
    }
 
-    $address = $_POST['address'];
-// $phone_no = $_POST['phone_no'] ?? '';
+    $address = $_POST['address']?? '';
+//  $phone_no = $_POST['phone_no'] ?? '';
 
 if (!preg_match('/^[0-9]{10}$/', $phone_no)) {
     $_SESSION['phone_error'] = "Phone number must be 10 digits";
@@ -83,10 +82,11 @@ if (!preg_match('/^[0-9]{10}$/', $phone_no)) {
     if (mysqli_query($conn, $sql)){
         echo "inserted succesfully";
     }else{echo "not inserted";}
-    unset($_SESSION['old']);
-
-    header("Location: registrionpageadmin.php");
-    exit;
+   header("Location: process_form1.php");
 
 }
- header("Location: process_form1.php");
+ 
+ unset($_SESSION['old']);
+
+    header("Location: process_form1.php");
+    exit;

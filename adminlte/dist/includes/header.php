@@ -202,7 +202,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="./includes/assets/img/user2-160x160.jpg"
+                  src="./includes/assets/img/avatar.png"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -212,14 +212,14 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="./includes/assets/img/user2-160x160.jpg"
+                    src="./includes/assets/img/avatar.png"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
-                  <p>
+                  <!-- <p>
                    krisha shah  - Web Developer
-                    <small>Member since Nov. 2023</small>
-                  </p>
+                    
+                  </p> -->
                 </li>
                  <li class="user-body">
                   <!--begin::Row-->
@@ -234,7 +234,7 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat float-end">log out</a>
                 </li>
 </ul>
                 

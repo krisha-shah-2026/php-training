@@ -1,13 +1,12 @@
 <?php
 session_start();
-include 'db.php'; // make sure this connects to your database
+include 'db.php'; 
 
 if (isset($_POST['submit'])) {
 
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Prepare statement to get user info
     $sql = "SELECT user_id, email, password FROM users WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $email);
@@ -29,9 +28,9 @@ if (isset($_POST['submit'])) {
         exit;
     }
 
-    // Successful login
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_email'] = $user['email'];
+    
+    $_SESSION['user_id'] = $user['user_id'];
+    $_SESSION['user_email'] = $user['user_email'];
 
     header("Location: samplepage.php");
     exit;
@@ -61,13 +60,13 @@ if (isset($_POST['submit'])) {
             <form action="" method="POST" onsubmit="return validateForm()">
                 <div class="mb-3">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required minlength="8">
+                    <input type="password" id="password" name="password">
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" value="Log In">
+                <input type="submit" name="submit" class="btn btn-primary" onclick="displayUserImage()" value="Log In">
                 <button type="button" onclick="window.location.href='register.php'" class="btn btn-secondary">
                     Register
                 </button>
