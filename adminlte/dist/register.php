@@ -1,6 +1,6 @@
 <?php 
 
-
+session_start();
 
 include 'db.php';
 ?>
@@ -71,7 +71,20 @@ include 'db.php';
             border-radius: 4px;
             display: none; /* Hidden by default */
         }
-    </style>
+        
+    .error1 {
+        color: red;
+        background-color: #797676;
+        border: 1px solid red;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+         display: none;
+
+    }
+</style>
+
+    
 </head>
                
  <form action="insert2.php" method="POST" onsubmit="return validateForm()">
@@ -79,31 +92,38 @@ include 'db.php';
       <div class="card-body">
      <div class="mb-3">
     <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" required><br><br>
- <!-- <input type="text" id="name" name="Name" placeholder="Enter your full name" /> -->
-            <!-- <span id="name-error" class="error-message"></span> -->
+    <input type="text" id="first_name" name="first_name" class="form-control" value="<?= $_SESSION['old']['first_name'] ?? '' ?>"><br><br>
    </div>
    <div class="mb-3">
     <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" required><br><br>
+    <input type="text" id="last_name" name="last_name" class="form-control" value="<?= $_SESSION['old']['last_name'] ?? '' ?>"><br><br>
 
     </div>
     <br>
     <div>
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
-     
-    </div>
+        <input type="email" id="email" name="email" class="form-control" value="<?= $_SESSION['old']['email'] ?? '' ?>">
+<?php if (isset($_SESSION['email_error'])) { ?>
+    <small class="text-danger">
+        <?php echo $_SESSION['email_error']; ?>
+    </small>
+<?php unset($_SESSION['email_error']); } ?>
     <br>
     <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required minlength="8">
+        <input type="password" id="password" name="password"  class="form-control" required minlength="8">
       <!-- <?php $password = $_POST['password'] ?? '';?> -->
+       <?php if (isset($_SESSION['password_error'])) { ?>
+<div class="error1" style="display:block;">
+        <?php echo $_SESSION['password_error']; ?>
+    </div>
+<?php unset($_SESSION['password_error']); } ?>
+
     </div>
     <br>
     <div>
         <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required minlength="8">
+        <input type="password" id="confirm_password" name="confirm_password"  class="form-control"required minlength="8">
     </div>
     <br>
     <!-- Element to display error messages -->
@@ -117,29 +137,13 @@ include 'db.php';
 
 <script>
     function validateForm() {
-       
+        //  const email = document.getElementById('email').value;
+
         const password = document.getElementById('password').value;
         const confirm_password = document.getElementById('confirm_password').value;
         const errorMessage = document.getElementById('error-message');
 
         // Reset error messages
-        errorMessage.textContent = '';
-        errorMessage.style.display = 'none';
-
-        
-        // 2. Check for empty spaces in the 'email' field
-        // if (email.trim() === '') {
-        //     errorMessage.textContent = 'Email Address cannot be empty or contain only spaces.';
-        //     errorMessage.style.display = 'block';
-        //     return false;
-        // }
-        
-       
-        if (password.trim() === '') {
-            errorMessage.textContent = 'Password cannot be empty or contain only spaces.';
-            errorMessage.style.display = 'block';
-            return false;
-        }
 
         // 4. Check if passwords match
         if (password !== confirm_password) {
@@ -153,3 +157,5 @@ include 'db.php';
         return true;
     }
 </script>
+</body>
+</html>
