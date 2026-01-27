@@ -1,0 +1,1 @@
+<?php header("Location: process_form2.php");
