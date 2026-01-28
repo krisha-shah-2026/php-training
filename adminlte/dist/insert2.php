@@ -41,31 +41,8 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
 }
      
  
-      
 
-
-    // Check if an error message exists in the session
-    // if (isset($_SESSION['error_message'])) {
-    //     // Display the error message
-    //     echo '<p style="color: red;">' . htmlspecialchars($_SESSION['error_message']) . '</p>';
-    //     // Unset the session variable so it doesn't show up on a fresh visit
-    //     unset($_SESSION['error_message']);
-    // }
-    // // You can also check for a success message if needed
-    // if (isset($_SESSION['success_message'])) {
-    //     echo '<p style="color: green;">' . htmlspecialchars($_SESSION['success_message']) . '</p>';
-    //     unset($_SESSION['success_message']);
-    // }
-// $sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
-// if (mysqli_num_rows($sql) > 0) {
-//     echo "This email is already registered.";
-// } else {
-//     // Proceed with insertion
-// }
-
-// User registration script (e.g., register.php)
-
-$password = $_POST['password']; // Get the plain-text password from the registration form
+// $password = $_POST['password']; // Get the plain-text password from the registration form
 
 // Hash the password securely
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -94,26 +71,18 @@ $confirm_password = $_POST['confirm_password'] ?? '';
 ('$first_name','$last_name','$email','$password','$confirm_password')";
 
     if (mysqli_query($conn, $sql)){
-    //     echo "inserted succesfully";}
-    // else{echo "not inserted";
+       echo "inserted succesfully";}
+    else{echo "not inserted";
             
-         unset($_SESSION['old']);
-        $_SESSION['success'] = "Registration successful!";
-        header("Location: process_form2.php");
-        exit;
-    } else {
-        $_SESSION['error'] = "Registration failed!";
-        header("Location: register.php");
-        exit;
-    }
+    }  header("Location: process_form2.php");
 
 
 
     
-//     unset($_SESSION['old']);
+ unset($_SESSION['old']);
 
-//     header("Location: register.php");
-//     exit;
+  header("Location: process_form2.php");
+  exit;
     
 // }
 //  header("Location: process_form2.php");
