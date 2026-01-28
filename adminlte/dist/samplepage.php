@@ -1,4 +1,8 @@
-<?php include_once('includes/header.php'); ?>
+<?php
+session_start();
+include 'auth.php';
+
+ include_once('includes/header.php'); ?>
 
   <?php include_once('includes/sidebar.php'); ?>
  <!--begin::App Main-->
