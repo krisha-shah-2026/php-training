@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
  include 'auth.php';
 
@@ -88,4 +89,96 @@
                 <!-- /.card -->
 
 
+=======
+<?php
+ 
+
+ include 'db.php';?>
+
+
+<?php include_once('includes/header.php'); ?>
+
+  <?php include_once('includes/sidebar.php'); ?>
+ <div class="card mb-4">
+                  <div class="card-header"><h3 class="card-title">Employee Table</h3></div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <table class="table table-bordered" role="table">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px" scope="col">id</th>
+                          <th scope="col">First Name</th>
+                          <th scope="col">Last Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Password</th>
+                          <th scope="col">Confirm Password</th>
+                          <th scope="col">Profile Image</th>
+                          <th scope="col">Address</th>
+                          <th scope="col">Phone No</th>
+                          <th scope="col">Gender</th>
+                          <th scope="col">Hobby</th>
+                          <th scope="col">Country</th>
+                        
+                        </tr>
+                      </thead>
+                      
+                  <!-- /.card-body -->
+                
+  <?php
+    $sql1 = "SELECT * FROM users";
+    $result = $conn->query($sql1);
+
+    // Check if any rows were returned
+    if ($result->num_rows > 0) {
+      // Loop through each row of data
+      while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['user_id']) . "</td>";
+        
+        echo "<td>" . htmlspecialchars($row['first_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['last_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['password']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['confirm_password']) . "</td>";
+        
+ 
+    //     $image_path = "/php-training/uploads/" . $row['profile_image'];
+
+    //  $image_src = '/php-training/uploads/' . htmlspecialchars($row['profile_image']);
+        echo "<td>"."</td>";
+    
+
+        echo "<td>"."</td>";
+        echo "<td>". "</td>";
+      
+         echo "<td>"."</td>";
+        echo "<td>"."</td>";
+        echo "<td>"."</td>";
+        // echo 'd';
+   
+       
+        echo "<td>";
+        // Pass the user ID to the edit and delete pages using a GET parameter 'id'
+        echo "<a href='edit2.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Edit2</a> ";
+        echo "<a href='delete2.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Delete2</a>";
+        echo "</td>";
+        // ----------------------------------------
+       
+        echo "</tr>";
+      }
+    } else {
+      echo "<tr><td colspan='10'>No users found</td></tr>";
+    }
+    
+    ?>
+  </tbody>
+    </tbody>
+                      </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
 <?php include_once('includes/footer.php'); ?>

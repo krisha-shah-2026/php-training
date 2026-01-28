@@ -50,7 +50,31 @@
                       <i class="nav-icon bi bi-circle"></i>
                       <p> Add page </p>
                     </a>
+<<<<<<< HEAD
                   </li>
+=======
+                 <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon bi bi-speedometer"></i>
+                  <p>
+                    CRUD opps
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="./process_form3.php" class="nav-link active">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>listing page</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="./registraionpageadmin.php" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p> Add page </p>
+                    </a>
+              
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
                   <!-- <li class="nav-item">
                     <a href="./index3.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>

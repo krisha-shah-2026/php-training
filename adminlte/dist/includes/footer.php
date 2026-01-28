@@ -1,4 +1,8 @@
+<<<<<<< HEAD
         <!--begin::Footer-->
+=======
+<!--begin::Footer-->
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
       <footer class="app-footer">
         <!--begin::To the end-->
         <div class="float-end d-none d-sm-inline">Anything you want</div>
@@ -15,9 +19,13 @@
     </div>
     <!--end::App Wrapper-->
     <!--begin::Script-->
+<<<<<<< HEAD
 
     <!--end::Script-->
 
+=======
+    <!--begin::Third Party Plugin(OverlayScrollbars)-->
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
       crossorigin="anonymous"
@@ -243,6 +251,7 @@
       const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
       sparkline3.render();
     </script>
+<<<<<<< HEAD
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="../js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
@@ -268,5 +277,9 @@
     </script>
     <!--end::OverlayScrollbars Configure-->
    </body>
+=======
+    <!--end::Script-->
+  </body>
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
   <!--end::Body-->
 </html>

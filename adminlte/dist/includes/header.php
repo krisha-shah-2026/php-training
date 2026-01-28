@@ -202,7 +202,11 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
+<<<<<<< HEAD
                   src="./includes/assets/img/user2-160x160.jpg"
+=======
+                  src="./includes/assets/img/avatar.png"
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -212,6 +216,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
+<<<<<<< HEAD
                     src="./includes/assets/img/user2-160x160.jpg"
                     class="rounded-circle shadow"
                     alt="User Image"
@@ -220,6 +225,16 @@
                    krisha shah  - Web Developer
                     <small>Member since Nov. 2023</small>
                   </p>
+=======
+                    src="./includes/assets/img/avatar.png"
+                    class="rounded-circle shadow"
+                    alt="User Image"
+                  />
+                  <!-- <p>
+                   krisha shah  - Web Developer
+                    
+                  </p> -->
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
                 </li>
                  <li class="user-body">
                   <!--begin::Row-->
@@ -234,7 +249,11 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
+<<<<<<< HEAD
                   <a href="logout.php" class="btn btn-default btn-flat float-end">log out</a>
+=======
+                  <a href="login.php" class="btn btn-default btn-flat float-end">log out</a>
+>>>>>>> 07d84f53fadea864880f2cac57f5fd2a4869f4f7
                 </li>
 </ul>
                 
