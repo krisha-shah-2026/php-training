@@ -234,7 +234,7 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  <a href="#" class="btn btn-default btn-flat float-end">log out</a>
+                  <a href="login.php" class="btn btn-default btn-flat float-end">log out</a>
                 </li>
 </ul>
                 

@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 //  echo 'h'; exit();
 if (isset($_POST['submit']))
     //   echo $_POST['submit']; exit();
-     { // $id = $_POST['id']; 
+     {  $id = $_POST['id']; 
     $first_name   = $_POST['first_name'];
     // // echo '$first_name'; exit();
     $last_name   = $_POST['last_name'];
@@ -46,7 +46,7 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
 $password = $_POST['password']; // Get the plain-text password from the registration form
 
 // Hash the password securely
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+// $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
 
@@ -88,10 +88,12 @@ $confirm_password = $_POST['confirm_password'] ?? '';
     if (mysqli_query($conn, $sql)){
       echo "inserted succesfully";}
      else{echo "not inserted";
+      header("Location: process_form1.php");
+
      }
          unset($_SESSION['old']);
 
-    header("Location: process_form2.php");
+    header("Location: login.php");
     exit;
 
 

@@ -131,10 +131,16 @@ include 'db.php';
     <br>
     <div>
 
-        <input type="submit" name="submit" value="submit" class="btn btn-primary">
+        <input type="submit" name="submit" value="submit" class="btn btn-primary" onclick="redirectToPage()">
     </div>
 </form>
 </html>
+<script>
+    function redirectToPage() {
+        // Redirects the user to the specified URL
+        window.location.href = "http://localhost/php-training/adminlte/dist/login.php";
+    }
+</script>
 
 <script>
     function validateForm() {

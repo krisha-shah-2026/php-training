@@ -1,6 +1,7 @@
-<?php
+<?php 
+ session_start();
+  include 'auth.php';
 
-session_start();
 // $passwordErr = "";
 
 // if (isset($_POST['submit'])) {
@@ -11,7 +12,7 @@ session_start();
 //         $passwordErr = "Passwords do not match";
 //     }
 // }
-// ?>
+//?>
 
 
 <?php include_once('includes/header.php'); ?>
@@ -321,7 +322,7 @@ function checkEmailUnique() {
 <?php include_once('includes/footer.php'); ?>
 
 
-
+ <?php include 'logout.php';?> 
 
 
 

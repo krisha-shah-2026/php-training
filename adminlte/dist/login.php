@@ -1,6 +1,9 @@
 <?php
-session_start();
+  session_start();
 include 'db.php'; 
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: login.php");     exit;
+ 
 
 if (isset($_POST['submit'])) {
 
@@ -20,17 +23,20 @@ if (isset($_POST['submit'])) {
         header("Location: login.php");
         exit;
     }
-
-    if (!password_verify($password, $user['password'])) {
-        // Incorrect password
-        $_SESSION['login_error'] = "Incorrect password";
-        header("Location: login.php");
-        exit;
+    if ($password !== $user['password']) {
+    $_SESSION['login_error'] = "Incorrect password";
+    header("Location: login.php");
+    exit;
+    // if (!password_verify($password, $user['password'])) {
+    //     // Incorrect password
+    //     $_SESSION['login_error'] = "Incorrect password";
+    //     header("Location: login.php");
+    //     exit;
     }
 
     
     $_SESSION['user_id'] = $user['user_id'];
-    $_SESSION['user_email'] = $user['user_email'];
+    $_SESSION['user_email'] = $user['email'];
 
     header("Location: samplepage.php");
     exit;
@@ -66,7 +72,7 @@ if (isset($_POST['submit'])) {
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password">
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" onclick="displayUserImage()" value="Log In">
+                <input type="submit" name="submit" class="btn btn-primary"  value="Log In">
                 <button type="button" onclick="window.location.href='register.php'" class="btn btn-secondary">
                     Register
                 </button>

@@ -1,4 +1,6 @@
-<?php 
+<?php
+include 'auth.php';
+
 
 include 'db.php';?>
 <?php include_once('includes/header.php'); ?>
@@ -80,3 +82,5 @@ include 'db.php';?>
                 <!-- /.card -->
 
 <?php include_once('includes/footer.php'); ?>
+<?php
+include 'logout.php';?>
