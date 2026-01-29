@@ -1,3 +1,11 @@
+<?php
+// session_start();
+ 
+// $profileImg = !empty($_SESSION['profile_image'])
+//     ? '/php-training/uploads/' . $_SESSION['profile_image']
+//     : '/php-training/uploads/default.png';
+?>  
+ 
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -201,22 +209,27 @@
             <!-- begin::User Menu Dropdown -->
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <img
-                  src="./includes/assets/img/avatar.png"
-                  class="user-image rounded-circle shadow"
-                  alt="User Image"
-                />
+               <p><img
+              src="<?= htmlspecialchars($profileImg) ?>"
+              class="rounded-circle shadow"
+            alt="User Image"
+               />
+             </li>
                 <span class="d-none d-md-inline">krisha</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
-                  <img
-                    src="./includes/assets/img/avatar.png"
-                    class="rounded-circle shadow"
-                    alt="User Image"
-                  />
-                  <!-- <p>
+                <p><img
+              src="<?= htmlspecialchars($profileImg) ?>"
+               class="rounded-circle shadow"
+           alt="User Image"
+             /></p>
+            </li>
+                  <!-- <p>  <img
+                    src="../dist/assets/img/randomImage.png"
+                    class="user-image rounded-circle shadow"
+                    alt="User Image" />
                    krisha shah  - Web Developer
                     
                   </p> -->
@@ -234,7 +247,7 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  <a href="login.php" class="btn btn-default btn-flat float-end">log out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat float-end">log out</a>
                 </li>
 </ul>
                 

@@ -1,4 +1,7 @@
-<?php include 'db.php';?>
+<?php 
+
+
+include 'db.php';?>
 
 <?php include_once('includes/header.php'); ?>
 
@@ -85,7 +88,7 @@ $id = $_GET['id'];
    
      $image_src = '/php-training/uploads/'. htmlspecialchars($sql2['profile_image']);//<?php echo $sql2['profile_image'];
      echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";?>
- <!-- <input type="file" name="profile_image" id="profile_image"><br> -->
+
  <input type="hidden" name="old_image" value="<?= $sql2['profile_image'] ?>">
  <input type="file" name="new_image"><br></br>
    Hobby:

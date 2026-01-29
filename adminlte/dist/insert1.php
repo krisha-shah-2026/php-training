@@ -1,16 +1,6 @@
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
-
-
-
-
-
-
-<?php 
 session_start();
+// include 'auth.php';
 include 'db.php';
 
 
@@ -22,6 +12,8 @@ if (isset($_POST['submit']))
     
     $last_name   = $_POST['last_name']?? '';
     $email   = $_POST['email']?? '';
+    
+    $address = $_POST['address']?? '';
     $phone_no = $_POST['phone_no'] ?? '';
     $gender  = $_POST['gender'] ?? null;
     $country = $_POST['country'] ?? null;
@@ -31,6 +23,7 @@ if (isset($_POST['submit']))
         'first_name' => $first_name,
         'last_name'  => $last_name,
         'email'      => $email,
+        'address'    => $address,
         'phone_no'   => $phone_no,
         'gender'     => $gender,
         'hobby'      => $hobby,
@@ -52,7 +45,7 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
 
  $password    = $_POST['password'];
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $confirm_password = $_POST['confirm_password'] ?? '';
     if ($_POST['password'] !== $_POST['confirm_password']) {
     $_SESSION['error'] = "Passwords do not match";
@@ -60,7 +53,7 @@ $confirm_password = $_POST['confirm_password'] ?? '';
     exit;
    }
 
-    $address = $_POST['address']?? '';
+    // $address = $_POST['address']?? '';
 //  $phone_no = $_POST['phone_no'] ?? '';
 
 if (!preg_match('/^[0-9]{10}$/', $phone_no)) {

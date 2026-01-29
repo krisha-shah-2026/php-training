@@ -1,4 +1,6 @@
-<?php include 'db.php';?>
+<?php 
+session_start();
+include 'db.php';?>
 <?php
 // $id = $_GET['id'];
           
@@ -23,8 +25,8 @@ if (isset($_POST['update']))
     //  echo $_POST['phone_no'] ; exit();
     $gender = $_POST['gender'] ?? '';
       // echo $_POST['gender']; exit();
-   $old_image = $_POST['old_image'];
-$new_image = $_FILES['new_image']['name'];
+    $old_image = $_POST['old_image'];
+    $new_image = $_FILES['new_image']['name'];
  
 if (!empty($new_image)) {
  
@@ -32,16 +34,23 @@ if (!empty($new_image)) {
     $target_file = $target_dir . basename($new_image);
  
     move_uploaded_file($_FILES['new_image']['tmp_name'], $target_file);
- 
+//    $_SESSION["image"] = $targetdir;
     if (!empty($old_image) && file_exists($target_dir . $old_image)) {
         unlink($target_dir . $old_image);
     }
  
     $profile_image = $new_image;
- 
+//  $_SESSION["image"] = $targetdir;
 } else {
     $profile_image = $old_image;
-}
+} 
+// $targetdir = "uploads/".$profile_image;
+// $users = $_SESSION['user_id'];
+// $_SESSION['profile_image'] = $profile_image;
+
+                    // $_SESSION["image"] = $targetdir;
+                
+ 
   $hobbies = $_POST['hobbies'] ?? [];
     $hobby=implode(",",$hobbies);
     $country = $_POST['country'];

@@ -1,11 +1,9 @@
-<?php
+<?php 
+session_start();
 include 'auth.php';
-
-
-include 'db.php';?>
-<?php include_once('includes/header.php'); ?>
-
-  <?php include_once('includes/sidebar.php'); ?>
+include 'db.php';
+include_once('includes/header.php'); 
+include_once('includes/sidebar.php'); ?>
  <div class="card mb-4">
                   <div class="card-header"><h3 class="card-title">Employee Table</h3></div>
                   <!-- /.card-header -->
@@ -82,5 +80,4 @@ include 'db.php';?>
                 <!-- /.card -->
 
 <?php include_once('includes/footer.php'); ?>
-<?php
-include 'logout.php';?>
+

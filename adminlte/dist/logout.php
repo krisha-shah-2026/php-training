@@ -1,14 +1,20 @@
-<?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
 <?php
 session_start();
+// $_SESSION = array();
+// var_dump($_SESSION);
+// session_start();
+// $_SESSION = array();
+// var_dump($_SESSION);
+//  $_SESSION['user_id'] = $user['user_id'];
 
-
+session_unset();
 session_destroy();
-
-
- header("Location: login.php");
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: login.php");
+//     exit();
+// }
+// var_dump($_SESSION);
+header("Location: login.php");
 exit();
+
+

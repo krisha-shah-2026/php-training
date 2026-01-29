@@ -8,28 +8,10 @@ include 'db.php';
 <html lang="en">
     <meta name="supported-color-schemes" content="light dark" />
     <link rel="preload" href="./includes/css/adminlte.css" as="style" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-      integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
-      crossorigin="anonymous"
-      media="print"
-      onload="this.media='all'"
-    />
+   
     <!--end::Fonts-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
-      crossorigin="anonymous"
-    />
-    <!--end::Third Party Plugin(OverlayScrollbars)-->
-    <!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-      crossorigin="anonymous"
-    />
+   
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="./includes/css/adminlte.css" />
@@ -53,7 +35,26 @@ include 'db.php';
                   <!-- <div class="card-header"><div class="card-title"> register Form</div></div>  -->
                   <!--end::Header-->
                   <!--begin::Form-->
-
+ <main class="app-main">
+        <!--begin::App Content Header-->
+        <div class="app-content-header">
+          <!--begin::Container-->
+          <div class="container-fluid">
+             </div>
+            </div>
+            <!--end::Row-->
+          </div>
+          <!--end::Container-->
+        </div>
+          
+          <div class="app-content">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row g-4">
+              <!--begin::Col-->
+              <div class="col-12">
+</div>
  <div class="col-md-6">
                 <!--begin::Quick Example-->
                 <div class="card card-primary card-outline mb-4">
@@ -92,14 +93,12 @@ include 'db.php';
       <div class="card-body">
      <div class="mb-3">
     <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" class="form-control" value="<?= $_SESSION['old']['first_name'] ?? '' ?>"><br><br>
+    <input type="text" id="first_name" name="first_name" class="form-control" value="<?= $_SESSION['old']['first_name'] ?? '' ?>"><br>
    </div>
    <div class="mb-3">
     <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" class="form-control" value="<?= $_SESSION['old']['last_name'] ?? '' ?>"><br><br>
-
-    </div>
-    <br>
+    <input type="text" id="last_name" name="last_name" class="form-control" value="<?= $_SESSION['old']['last_name'] ?? '' ?>"><br>
+</div>
     <div>
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="email" class="form-control" value="<?= $_SESSION['old']['email'] ?? '' ?>">
@@ -111,7 +110,7 @@ include 'db.php';
     <br>
     <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password"  class="form-control" required minlength="8">
+        <input type="password" id="password" name="password"  class="form-control">
       <!-- <?php $password = $_POST['password'] ?? '';?> -->
        <?php if (isset($_SESSION['password_error'])) { ?>
 <div class="error1" style="display:block;">
@@ -123,7 +122,7 @@ include 'db.php';
     <br>
     <div>
         <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password"  class="form-control"required minlength="8">
+        <input type="password" id="confirm_password" name="confirm_password"  class="form-control">
     </div>
     <br>
     <!-- Element to display error messages -->
@@ -131,7 +130,7 @@ include 'db.php';
     <br>
     <div>
 
-        <input type="submit" name="submit" value="submit" class="btn btn-primary" onclick="redirectToPage()">
+        <input type="submit" name="submit" value="submit" class="btn btn-primary" >
     </div>
 </form>
 </html>

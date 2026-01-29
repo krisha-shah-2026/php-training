@@ -1,10 +1,6 @@
 <?php
   session_start();
 include 'db.php'; 
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");     exit;
- 
-
 if (isset($_POST['submit'])) {
 
     $email = trim($_POST['email']);
@@ -27,15 +23,8 @@ if (isset($_POST['submit'])) {
     $_SESSION['login_error'] = "Incorrect password";
     header("Location: login.php");
     exit;
-    // if (!password_verify($password, $user['password'])) {
-    //     // Incorrect password
-    //     $_SESSION['login_error'] = "Incorrect password";
-    //     header("Location: login.php");
-    //     exit;
-    }
-
-    
-    $_SESSION['user_id'] = $user['user_id'];
+     }
+      $_SESSION['user_id'] = $user['user_id'];
     $_SESSION['user_email'] = $user['email'];
 
     header("Location: samplepage.php");
@@ -46,6 +35,26 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <main class="app-main">
+        <!--begin::App Content Header-->
+        <div class="app-content-header">
+          <!--begin::Container-->
+          <div class="container-fluid">
+             </div>
+            </div>
+            <!--end::Row-->
+          </div>
+          <!--end::Container-->
+        </div>
+          
+          <div class="app-content">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row g-4">
+              <!--begin::Col-->
+              <div class="col-12">
+</div>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="./includes/css/adminlte.css">
@@ -88,10 +97,8 @@ function validateForm() {
     if (email === "" || password === "") {
         alert("Please fill in all fields.");
         return false;
-    }
-    if (password.length < 8) {
-        alert("Password must be at least 8 characters.");
-        return false;
+    
+    
     }
     return true;
 }
