@@ -3,7 +3,8 @@
    include 'auth.php';
   include_once('includes/header.php');
   include_once('includes/sidebar.php'); ?>
-    
+   
+
             <head>
               <style>
                
@@ -21,11 +22,12 @@
                   <!--end::Header-->
                   <!--begin::Form-->
                 <body>
-    <form action="insert1.php" method="POST"  enctype="multipart/form-data">
+    <form action="insert.php" method="POST"  enctype="multipart/form-data">
 
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" class="form-control" value="<?= $_SESSION['old']['first_name'] ?? '' ?>">
 <br><br>
+
 
    
     <label for="last_name">Last Name:</label>
@@ -34,7 +36,7 @@
 
    
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" class="form-control" value="<?= $_SESSION['old']['email'] ?? '' ?> ">
+    <input type="email" id="email" name="email" class="form-control" value="<?= $_SESSION['old']['email'] ?? ''?> ">
 <br><br>
 <?php if (isset($_SESSION['email_error'])) { ?>
     <small class="text-danger">
@@ -49,8 +51,7 @@
 
     <label for="confirm_password">Confirm Password:</label>
     <input type="password" id="confirm_password" name="confirm_password" class="form-control"><br><br>
-    <!-- <p style='color: red;'><?php echo $_SESSION['password_errors'] ?? ''; ?></p> 
-    <?php unset($_SESSION['password_errors']); ?> -->
+  
    <?php if (isset($_SESSION['error'])) {
     echo '<p style="color:red;">' . $_SESSION['error'] . '</p>';
     unset($_SESSION['error']);
@@ -62,7 +63,7 @@
 
     <!-- Address -->
     <label for="address">Address:</label><br>    
-    <textarea id="address" name="address" class="form-control" value="<?= $_SESSION['old']['address'] ?? '' ?>"rows="4" cols="50"></textarea><br>
+    <textarea id="address" name="address" class="form-control" <?= $_SESSION['old']['address'] ?? ''?> rows="4" cols="50"></textarea><br>
 
     <!-- Phone Number -->
     <label for="phone_no">Phone Number:</label>
@@ -80,25 +81,25 @@
    <label>Gender:</label><br>
      <label for="male">Male</label><br>
     <input type="radio" id="male" name="gender"  value="Male"
-<?= (($_SESSION['old']['gender'] ?? '') === 'Male') ? 'checked' : '' ?>>
+<?= (($_SESSION['old']['gender'] ?? '') === 'male') ? 'checked' : '' ?>>
 
      <label for="female">Female</label><br>
-    <input type="radio" id="female" name="gender" value="female" <?= (($_SESSION['old']['gender'] ?? '') === 'Female') ? 'checked' : '' ?>>
+    <input type="radio" id="female" name="gender" value="female" <?= (($_SESSION['old']['gender'] ?? '') === 'female') ? 'checked' : '' ?>>
 
     <label for="other">Other</label><br><br>
-    <input type="radio" id="other" name="gender" value="other" <?= (($_SESSION['old']['gender'] ?? '') === 'Other') ? 'checked' : '' ?>>
+    <input type="radio" id="other" name="gender" value="other" <?= (($_SESSION['old']['gender'] ?? '') === 'other') ? 'checked' : '' ?>>
 
     <label for="other">Other</label><br><br>
 
     <!-- Hobby (Checkbox) -->
     <label>Hobbies:</label><br>
-    <input type="checkbox" id="hobby1" name="hobbies[]" value="reading" <?= in_array('reading', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
+    <input type="checkbox" id="hobby1" name="hobbies[]" value="reading" <?= in_array('reading', $_SESSION['old']['hobbies'] ?? []) ? 'checked' : '' ?>>
 
     <label for="hobby1"> Reading</label><br>
-    <input type="checkbox" id="hobby2" name="hobbies[]" value="gaming" <?= in_array('gaming', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
+    <input type="checkbox" id="hobby2" name="hobbies[]" value="gaming" <?= in_array('gaming', $_SESSION['old']['hobbies'] ?? []) ? 'checked' : '' ?>>
 
     <label for="hobby2"> Gaming</label><br>
-    <input type="checkbox" id="hobby3" name="hobbies[]" value="coding" <?= in_array('coding', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
+    <input type="checkbox" id="hobby3" name="hobbies[]" value="coding" <?= in_array('coding', $_SESSION['old']['hobbies'] ?? []) ? 'checked' : '' ?>>
 
     <label for="hobby3"> Coding</label><br><br>
 
@@ -111,9 +112,7 @@
         <option value="india"<?= ($_SESSION['old']['country'] ?? '') == 'India' ? 'selected' : '' ?>>India</option>
  
     </select><br><br>
-
-
-                    <!--begin::Body-->
+       <!--begin::Body-->
                     <!-- <div class="card-body"> -->
                       <!-- <div class="row mb-3"> -->
                          
@@ -133,7 +132,8 @@
 
 </body>
 
-<script>
+
+<!-- <script>
       function validateForm() {
   let x = document.forms["myform"]["fname"].value;
   if (x == "") {
@@ -172,8 +172,8 @@
 
 
 
-}
-</script>
+} -->
+<!-- </script> -->
 <?php include_once('includes/footer.php'); ?>
 
 

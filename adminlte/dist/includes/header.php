@@ -1,9 +1,9 @@
 <?php
-// session_start();
+session_start();
  
-// $profileImg = !empty($_SESSION['profile_image'])
-//     ? '/php-training/uploads/' . $_SESSION['profile_image']
-//     : '/php-training/uploads/default.png';
+$profileImg = !empty($_SESSION['profile_image'])
+    ? '/php-training/uploads/' . $_SESSION['profile_image']
+    : '/php-training/uploads/default.png';
 ?>  
  
 <!doctype html>

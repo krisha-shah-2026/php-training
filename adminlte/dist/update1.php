@@ -46,7 +46,7 @@ if (!empty($new_image)) {
 } 
 // $targetdir = "uploads/".$profile_image;
 // $users = $_SESSION['user_id'];
-// $_SESSION['profile_image'] = $profile_image;
+//  $_SESSION['profile_image'] = $profile_image;
 
                     // $_SESSION["image"] = $targetdir;
                 
@@ -74,6 +74,6 @@ if (!empty($new_image)) {
 
     //header("Location: process_form1.php");
       
-}header("Location: process_form1.php");
+}header("Location: listing.php");
       
 ?>

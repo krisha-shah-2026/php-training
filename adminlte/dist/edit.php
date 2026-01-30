@@ -67,7 +67,7 @@ $id = $_GET['id'];
                   <!--begin::Form-->
                 <body>
 
-<form action="update1.php" method="post">
+<form action="update1.php" method="post" enctype="multipart/form-data">
      <input type="hidden" name="id" value="<?php echo $id; ?>">
     First Name: <input type="text" name="first_name" value="<?php echo $sql2['first_name']; ?>" class="form-control"><br><br>
     Last Name: <input type="text" name="last_name" value="<?php echo $sql2['last_name']; ?>" class="form-control"><br><br>
