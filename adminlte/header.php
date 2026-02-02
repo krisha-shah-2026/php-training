@@ -36,7 +36,7 @@ $profileImg = !empty($_SESSION['profile_image'])
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="/dist/includes/css/adminlte.css" as="style" />
+    <link rel="preload" href="./dist/includes/css/adminlte.css" as="style" />
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <link
@@ -63,7 +63,7 @@ $profileImg = !empty($_SESSION['profile_image'])
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="/dist/includes/css/adminlte.css" />
+    <link rel="stylesheet" href="./dist/includes/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link
@@ -121,7 +121,7 @@ $profileImg = !empty($_SESSION['profile_image'])
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="/dist/includes/assets/img/user1-128x128.jpg"
+                        src="./dist/includes/assets/img/user1-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />

@@ -3,9 +3,9 @@ require_once'conectivityoops.php';
 
 
 
-include_once('includes/header.php');
+include_once('../header.php');
 
-   include_once('includes/sidebar.php'); ?>
+   include_once('../sidebar.php'); ?>
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <!DOCTYPE html>
@@ -98,4 +98,4 @@ if (isset($_SESSION['registration_error'])) {
 </body>
 </html>
 
-<?php include_once('includes/footer.php'); ?>
+<?php include_once('../footer.php'); ?>

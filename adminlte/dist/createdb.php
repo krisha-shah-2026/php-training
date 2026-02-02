@@ -21,7 +21,7 @@ CREATE TABLE users (
  <!-- <!DOCTYPE html>
 <html lang="en">
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="./includes/css/adminlte.css" as="style" />
+    <link rel="preload" href="/dist/includes/css/adminlte.css" as="style" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -46,7 +46,7 @@ CREATE TABLE users (
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./includes/css/adminlte.css" />
+    <link rel="stylesheet" href="/dist/includes/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link

@@ -1,4 +1,8 @@
-<?php ini_set('display_errors', 1);
+<?php 
+// echo"h";exit();
+
+
+ini_set('display_errors', 1);
 error_reporting(E_ALL);
  require_once 'conectivityoops.php';
   
@@ -62,24 +66,24 @@ if (!empty($_FILES['profile_image']['name'])) {
 
 // }    
        
- if (empty($first_name)) {
-    $errors['first_name'] = "Enter your first name!";
-}
+//  if (empty($first_name)) {
+//     $errors['first_name'] = "Enter your first name!";
+// }
 
-if (empty($last_name)) {
-    $errors['last_name'] = "Enter your last name!";
-}
+// if (empty($last_name)) {
+//     $errors['last_name'] = "Enter your last name!";
+// }
 
-if (empty($email)) {
-    $errors['email'] = "Enter your email!";}
-// // } elseif (emailExists($email)) {
-// //     $errors['email'] = "Email already registered!";
-// // }
+// if (empty($email)) {
+//     $errors['email'] = "Enter your email!";}
+// // // } elseif (emailExists($email)) {
+// // //     $errors['email'] = "Email already registered!";
+// // // }
 
-if (empty($password)) {
-    $errors['password'] = "Enter your password!";
-     } elseif (strlen($password) < 8) {
-             $errors['password'] = "Password must be at least 8 characters"; }
+// if (empty($password)) {
+//     $errors['password'] = "Enter your password!";
+//      } elseif (strlen($password) < 8) {
+//              $errors['password'] = "Password must be at least 8 characters"; }
 
 // if (empty($confirm_password)) {
 //     $errors['confirm_password'] = "Enter confirm password!";
@@ -114,11 +118,11 @@ if (empty($password)) {
 // }
 
 
- if (!empty($errors)) {
-      $_SESSION['registration_error'] = $errors;
-    header("Location: registeroops.php");
-   exit;
- }
+//  if (!empty($errors)) {
+//       $_SESSION['registration_error'] = $errors;
+//     header("Location: registeroops.php");
+//    exit;
+//  }
 
 
 

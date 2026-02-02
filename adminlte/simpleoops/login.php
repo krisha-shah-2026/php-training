@@ -41,10 +41,11 @@ session_start();
              unset($_SESSION['registration_success']);?>
              
  <?php if ($success): ?>
-    <div class="success-message" style="color: green; padding: 10px; border: 1px solid green; background-color: #e8ebe9;">
-        <?= htmlspecialchars($success) ?>
-    </div>
-<?php endif; 
+ 
+    <script>
+        alert("<?= addslashes($success) ?>");
+    </script>
+<?php endif;
    
             if (isset($_SESSION['login_error'])) {
                 echo '<div style="color:red;">'.$_SESSION['login_error'].'</div>';

@@ -63,7 +63,7 @@ include_once('includes/sidebar.php'); ?>
         // Pass the user ID to the edit and delete pages using a GET parameter 'id'
 
         echo "<a href='edit.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Edit</a> ";
-       echo "<td><a href='delete.php?id=" . htmlspecialchars($row['user_id']) . "' class='button' onClick='return confirm(\"Do you really want to delete?\");'>Delete</a></td>";
+        echo "<a href='delete.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Delete</a>";
         echo "</td>";
         // ----------------------------------------
        

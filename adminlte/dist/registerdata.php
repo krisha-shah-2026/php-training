@@ -193,8 +193,8 @@ if (empty($confirm_password)) {
  ('$first_name','$last_name','$email','$password','$confirm_password')";
 if (mysqli_query($conn, $sql)) {   
      $_SESSION['registration_success'] = "Registration successful! Please login.";
-
-
+//  echo "<script>alert('" . addslashes($_SESSION['registration_success']) . "');</script>";
+//  unset($_SESSION['registration_success']);
     unset($_SESSION['old']);
     unset($_SESSION['registration_error']);
 
