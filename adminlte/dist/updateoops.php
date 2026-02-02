@@ -21,16 +21,17 @@ if (isset($_POST['update'])) {
     $phone_no   = $_POST['phone_no'];
     $gender     = $_POST['gender'] ?? '';
     $country    = $_POST['country'];
-    $old_image  = $_POST['old_image'];
+    // $old_image  = $_POST['old_image'];
 
     //  HOBBIES
     $hobbies = $_POST['hobbies'] ?? [];
     $hobby   = implode(",", $hobbies);
+    $old_image  = $_POST['old_image'];
 
 
     $profile_image = $old_image;
 
-    if (!empty($_FILES['new_image']['name'])) {
+    if (!empty($_FILES['profile_image']['name'])) {
 
         $upload_dir = __DIR__ . "/uploads/";
 
@@ -38,10 +39,10 @@ if (isset($_POST['update'])) {
             mkdir($upload_dir, 0777, true);
         }
 
-        $ext = pathinfo($_FILES['new_image']['name'], PATHINFO_EXTENSION);
+        $ext = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
         $new_filename = time() . "_" . uniqid() . "." . $ext;
 
-        if (move_uploaded_file($_FILES['new_image']['tmp_name'], $upload_dir . $new_filename)) {
+        if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $upload_dir . $new_filename)) {
 
             if (!empty($old_image) && file_exists($upload_dir . $old_image)) {
                 unlink($upload_dir . $old_image);

@@ -43,15 +43,15 @@ if ($row = mysqli_fetch_assoc($sql)) {
     <?php $profileImage = $row['profile_image'] ?? '';
 
 if (!empty($profileImage)) {
-    echo "<img src='/php-training/uploads/".htmlspecialchars($profileImage)."' width='50'>";
+    echo "<img src='uploads/".htmlspecialchars($profileImage)."' width='50'>";
 }?>
 
    <!-- <?php $image_path = "/php-training/uploads/" . $row['profile_image'];
-   $image_src = '/php-training/uploads/'. htmlspecialchars($row['profile_image']);//<?php echo $sql2['profile_image'];
+   $image_src = 'uploads/'. htmlspecialchars($row['profile_image']);//<?php echo $sql2['profile_image'];
      echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";?> -->
 
  <input type="hidden" name="old_image" value="<?= $row['profile_image'] ?>">
- <input type="file" name="new_image"><br></br>
+ <input type="file" name="profile_image"><br></br>
    Hobby:
     <?php
         // $hobby = explode(",",$sql2['hobby']);
