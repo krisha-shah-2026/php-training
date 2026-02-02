@@ -242,11 +242,11 @@ if (!empty($new_image)) {
     WHERE user_id = '$id'");
 
 
+
 $_SESSION['profile_image'] = !empty($profile_image) ? $profile_image : 'default.jpg';
 
    header("Location: listing.php");
 exit;
 
- }//header("Location: listing.php");
-      
+ }    
 ?>

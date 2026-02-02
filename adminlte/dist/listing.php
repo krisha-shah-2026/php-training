@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 include 'auth.php';
@@ -60,6 +61,7 @@ include_once('includes/sidebar.php'); ?>
         // --- MODIFIED CODE FOR ACTION BUTTONS ---
         echo "<td>";
         // Pass the user ID to the edit and delete pages using a GET parameter 'id'
+
         echo "<a href='edit.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Edit</a> ";
         echo "<a href='delete.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Delete</a>";
         echo "</td>";
@@ -80,4 +82,5 @@ include_once('includes/sidebar.php'); ?>
                 <!-- /.card -->
 
 <?php include_once('includes/footer.php'); ?>
+
 

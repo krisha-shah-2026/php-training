@@ -1,10 +1,14 @@
 <?php
+
  $upload_dir = '/php-training/uploads/';
 
 $profileImg = !empty($_SESSION['profile_image'])
     ? '/php-training/uploads/' . $_SESSION['profile_image']
     : '/php-training/uploads/default.jpg';
 ?>  
+
+ 
+ 
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -183,13 +187,15 @@ $profileImg = !empty($_SESSION['profile_image'])
             <!-- begin::User Menu Dropdown -->
              
             <li class="nav-item dropdown user-menu">
+
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
                <img
               src="<?= htmlspecialchars($profileImg) ?>"
               class="rounded-circle shadow"
             alt="User Image" style="width:40px; height:40px; object-fit:cover;"
                />
-             
+            
+             </li>
                 <span class="d-none d-md-inline">krisha</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
@@ -197,21 +203,19 @@ $profileImg = !empty($_SESSION['profile_image'])
                 <li class="user-header text-bg-primary">
                 <p><img
               src="<?= htmlspecialchars($profileImg) ?>"
-               class="rounded-circle shadow"
-           alt="User Image" style="width:40px; height:40px; object-fit:cover;"
+               class="rounded-circle shadow"  alt="User Image" style="width:40px; height:40px; object-fit:cover;"
              /></p>
             </li>                
-            <!-- <li class="user-header text-bg-primary">
+            <li class="user-header text-bg-primary">
 
                   <p> 
                      <img
               src="<?= htmlspecialchars($profileImg) ?>"
                     class="user-image rounded-circle shadow"
                     alt="User Image" />
-                   krisha shah  - Developer
-                    
-                  </p> 
-</li> -->
+                   krisha shah  - Developer</p>
+            </li>
+                 
                  <li class="user-body">
                   <!--begin::Row-->
                   <div class="row">

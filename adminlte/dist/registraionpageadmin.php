@@ -191,14 +191,3 @@ if (isset($_SESSION['registration_error'])) {
 } -->
 <!-- </script> -->
 <?php include_once('includes/footer.php'); ?>
-
-
-
-
-
-
-
-
-
-
- 
