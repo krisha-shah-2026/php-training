@@ -1,3 +1,10 @@
+<?php
+ $upload_dir = '/php-training/uploads/';
+
+$profileImg = !empty($_SESSION['profile_image'])
+    ? '/php-training/uploads/' . $_SESSION['profile_image']
+    : '/php-training/uploads/default.jpg';
+?>  
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -157,31 +164,6 @@
                   <!--end::Message-->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                  <!--begin::Message-->
-                  <div class="d-flex">
-                    <div class="flex-shrink-0">
-                      <img
-                        src="./includes/assets/img/user3-128x128.jpg"
-                        alt="User Avatar"
-                        class="img-size-50 rounded-circle me-3"
-                      />
-                    </div>
-                    <div class="flex-grow-1">
-                      <h3 class="dropdown-item-title">
-                        Nora Silvester
-                        <span class="float-end fs-7 text-warning">
-                          <i class="bi bi-star-fill"></i>
-                        </span>
-                      </h3>
-                      <p class="fs-7">The subject goes here</p>
-                      <p class="fs-7 text-secondary">
-                        <i class="bi bi-clock-fill me-1"></i> 4 Hours Ago
-                      </p>
-                    </div>
-                  </div>
-                  <!--end::Message-->
-                </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
               </div>
@@ -199,28 +181,37 @@
             
             <!--end::Fullscreen Toggle-->
             <!-- begin::User Menu Dropdown -->
+             
             <li class="nav-item dropdown user-menu">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <img
-                  src="./includes/assets/img/avatar.png"
-                  class="user-image rounded-circle shadow"
-                  alt="User Image"
-                />
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
+               <img
+              src="<?= htmlspecialchars($profileImg) ?>"
+              class="rounded-circle shadow"
+            alt="User Image" style="width:40px; height:40px; object-fit:cover;"
+               />
+             
                 <span class="d-none d-md-inline">krisha</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
-                  <img
-                    src="./includes/assets/img/avatar.png"
-                    class="rounded-circle shadow"
-                    alt="User Image"
-                  />
-                  <!-- <p>
-                   krisha shah  - Web Developer
+                <p><img
+              src="<?= htmlspecialchars($profileImg) ?>"
+               class="rounded-circle shadow"
+           alt="User Image" style="width:40px; height:40px; object-fit:cover;"
+             /></p>
+            </li>                
+            <!-- <li class="user-header text-bg-primary">
+
+                  <p> 
+                     <img
+              src="<?= htmlspecialchars($profileImg) ?>"
+                    class="user-image rounded-circle shadow"
+                    alt="User Image" />
+                   krisha shah  - Developer
                     
-                  </p> -->
-                </li>
+                  </p> 
+</li> -->
                  <li class="user-body">
                   <!--begin::Row-->
                   <div class="row">
@@ -234,14 +225,10 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
-<<<<<<< HEAD
                   <a href="logout.php" class="btn btn-default btn-flat float-end">log out</a>
-=======
-                  <a href="login.php" class="btn btn-default btn-flat float-end">log out</a>
->>>>>>> e0c0eabdd462d0ee8c033be476cec7cc9246aa5a
                 </li>
 </ul>
-                
+</ul>
         </div>
         <!--end::Container-->
       </nav>

@@ -1,12 +1,9 @@
-<?php
- 
-
- include 'db.php';?>
-
-
-<?php include_once('includes/header.php'); ?>
-
-  <?php include_once('includes/sidebar.php'); ?>
+<?php 
+session_start();
+include 'auth.php';
+include 'db.php';
+include_once('includes/header.php'); 
+include_once('includes/sidebar.php'); ?>
  <div class="card mb-4">
                   <div class="card-header"><h3 class="card-title">Employee Table</h3></div>
                   <!-- /.card-header -->
@@ -29,9 +26,6 @@
                         
                         </tr>
                       </thead>
-                      
-                  <!-- /.card-body -->
-                
   <?php
     $sql1 = "SELECT * FROM users";
     $result = $conn->query($sql1);
@@ -49,26 +43,25 @@
         echo "<td>" . htmlspecialchars($row['password']) . "</td>";
         echo "<td>" . htmlspecialchars($row['confirm_password']) . "</td>";
         
- 
-    //     $image_path = "/php-training/uploads/" . $row['profile_image'];
 
-    //  $image_src = '/php-training/uploads/' . htmlspecialchars($row['profile_image']);
-        echo "<td>"."</td>";
+        $image_path = "/php-training/uploads/" . $row['profile_image'];
+
+     $image_src = '/php-training/uploads/' . htmlspecialchars($row['profile_image']);
+        echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";
     
 
-        echo "<td>"."</td>";
-        echo "<td>". "</td>";
+        echo "<td>" . htmlspecialchars($row['address']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['phone_no']) . "</td>";
       
-         echo "<td>"."</td>";
-        echo "<td>"."</td>";
-        echo "<td>"."</td>";
+         echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['hobby']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['country']) . "</td>";
         // echo 'd';
-   
-       
+        // --- MODIFIED CODE FOR ACTION BUTTONS ---
         echo "<td>";
         // Pass the user ID to the edit and delete pages using a GET parameter 'id'
-        echo "<a href='edit2.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Edit2</a> ";
-        echo "<a href='delete2.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Delete2</a>";
+        echo "<a href='edit.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Edit</a> ";
+        echo "<a href='delete.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Delete</a>";
         echo "</td>";
         // ----------------------------------------
        
@@ -80,12 +73,11 @@
     
     ?>
   </tbody>
-    </tbody>
                       </table>
                   </div>
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
 
-
 <?php include_once('includes/footer.php'); ?>
+

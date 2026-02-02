@@ -40,7 +40,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./process_form3.php" class="nav-link active">
+                    <a href="./listing.php" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>listing page</p>
                     </a>
@@ -50,6 +50,11 @@
                       <i class="nav-icon bi bi-circle"></i>
                       <p> Add page </p>
                     </a>
+</ul>
+
+
+
+                    
                  <li class="nav-item menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
@@ -60,13 +65,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./process_form3.php" class="nav-link active">
+                    <a href="./listingoops.php" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>listing page</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./registraionpageadmin.php" class="nav-link">
+                    <a href="./registeroops.php" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p> Add page </p>
                     </a>
