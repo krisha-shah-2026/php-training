@@ -1,8 +1,9 @@
 <?php 
   session_start();
    include 'auth.php';
-  include_once('includes/header.php');
-  include_once('includes/sidebar.php'); ?>
+   include 'db.php';
+  include_once('../header.php');
+  include_once('../sidebar.php'); ?>
    
 
             <head>
@@ -13,20 +14,16 @@
     font-size: 14px;
   }
 </style>
-
-
- <!--begin::Horizontal Form-->
+<!--begin::Horizontal Form-->
                 <div class="card card-warning card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">Employee registration Form</div></div>
-                  <!--end::Header-->
-                  <!--begin::Form-->
+               <div class="card-header"><div class="card-title">Employee registration Form</div></div>
+              
 <body><?php
-if (isset($_SESSION['registration_error'])) {
-    foreach ($_SESSION['registration_error'] as $errors) {
-        echo "<p style='color:red;'>$errors</p>";
-    }
-    unset($_SESSION['registration_error']);
+        if (isset($_SESSION['registration_error'])) {
+             foreach ($_SESSION['registration_error'] as $errors) {
+            echo "<p style='color:red;'>$errors</p>";
+                 }
+             unset($_SESSION['registration_error']);
 }?>
 
 <form action="insert.php" method="POST" enctype="multipart/form-data">
@@ -109,13 +106,13 @@ if (isset($_SESSION['registration_error'])) {
 
     <!-- Hobby (Checkbox) -->
     <label>Hobbies:</label><br>
-    <input type="checkbox" id="hobby1" name="hobbies[]" value="reading" <?= in_array('reading', $_SESSION['old']['hobbies'] ?? []) ? 'checked' : '' ?>>
+    <input type="checkbox" id="hobby1" name="hobbies[]" value="reading" <?= in_array('reading', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
 
     <label for="hobby1"> Reading</label><br>
-    <input type="checkbox" id="hobby2" name="hobbies[]" value="gaming" <?= in_array('gaming', $_SESSION['old']['hobbies'] ?? []) ? 'checked' : '' ?>>
+    <input type="checkbox" id="hobby2" name="hobbies[]" value="gaming" <?= in_array('gaming', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
 
     <label for="hobby2"> Gaming</label><br>
-    <input type="checkbox" id="hobby3" name="hobbies[]" value="coding" <?= in_array('coding', $_SESSION['old']['hobbies'] ?? []) ? 'checked' : '' ?>>
+    <input type="checkbox" id="hobby3" name="hobbies[]" value="coding" <?= in_array('coding', $_SESSION['old']['hobby'] ?? []) ? 'checked' : '' ?>>
 
     <label for="hobby3"> Coding</label><br><br>
 
@@ -190,4 +187,4 @@ if (isset($_SESSION['registration_error'])) {
 
 } -->
 <!-- </script> -->
-<?php include_once('includes/footer.php'); ?>
+<?php include_once('../footer.php'); ?>

@@ -1,10 +1,10 @@
 
 <?php 
 session_start();
-include 'auth.php';
+ include 'auth.php';
 include 'db.php';
-include_once('includes/header.php'); 
-include_once('includes/sidebar.php'); ?>
+include_once('../header.php'); 
+include_once('../sidebar.php'); ?>
  <div class="card mb-4">
                   <div class="card-header"><h3 class="card-title">Employee Table</h3></div>
                   <!-- /.card-header -->
@@ -63,9 +63,9 @@ include_once('includes/sidebar.php'); ?>
         // Pass the user ID to the edit and delete pages using a GET parameter 'id'
 
         echo "<a href='edit.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Edit</a> ";
-        echo "<a href='delete.php?id=" . htmlspecialchars($row['user_id']) . "' class='button'>Delete</a>";
+      echo "<a href=\"delete.php?id=" . htmlspecialchars($row['user_id']) . "\" class=\"button\" onclick=\"return confirm('Do you really want to delete?');\">Delete</a>";
         echo "</td>";
-        // ----------------------------------------
+       
        
         echo "</tr>";
       }
@@ -81,6 +81,6 @@ include_once('includes/sidebar.php'); ?>
                 </div>
                 <!-- /.card -->
 
-<?php include_once('includes/footer.php'); ?>
+<?php include_once('../footer.php'); ?>
 
 

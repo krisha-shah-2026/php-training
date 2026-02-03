@@ -1,17 +1,30 @@
 <?php 
 
-require_once'conectivityoops.php';
+require_once 'conectivityoops.php';
 
-include_once('includes/header.php'); 
+include_once('../header.php'); 
 
- include_once('includes/sidebar.php'); ?>
+ include_once('../sidebar.php'); ?>
 
 <?php
 $userid = intval($_GET['id']);
 $onerecord = new DB_con();
 $sql = $onerecord->fetchonerecord($userid);
-
-if ($row = mysqli_fetch_assoc($sql)) {
+// function get_value($field, $row) {
+//     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST[$field])) {
+//         return htmlspecialchars($_POST[$field], ENT_QUOTES, 'UTF-8');
+//     }
+//     return isset($row[$field]) ? htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8') : '';
+// }
+// 
+if (isset($_SESSION['registration_error'])) {
+    foreach ($_SESSION['registration_error'] as $errors) {
+        echo "<p style='color:red;'>$errors</p>";
+    }
+    unset($_SESSION['registration_error']);
+}
+if($row=mysqli_fetch_array($sql))
+  {
 ?>
 
                  <div class="card card-warning card-outline mb-4">
@@ -33,7 +46,7 @@ if (isset($_SESSION['registration_error'])) {
     Last Name: <input type="text" name="last_name" value="<?php echo $row['last_name']; ?>" class="form-control"><br><br>
     Email: <input type="email" name="email" value="<?php echo $row['email']; ?>" class="form-control"><br><br>
     Password: <input type="password" name="password" value="<?php echo $row['password']; ?>"  class="form-control"><br><br>
-    Confirm Password: <input type="confirm_password" name="confirm_password" value="<?php echo $row['confirm_password']; ?>" class="form-control"><br><br>
+    Confirm Password: <input type="password" name="confirm_password" value="<?php echo $row['confirm_password']; ?>" class="form-control"><br><br>
  
     Address: <textarea name="address" class="form-control"><?php echo $row['address']; ?></textarea><br><br>
     Phone: <input type="number" name="phone_no" value="<?php echo $row['phone_no']; ?>"  class="form-control" ><br><br>
@@ -82,4 +95,4 @@ if (!empty($profileImage)) {
                   </form>
                  </div>
 
-<?php include_once('includes/footer.php'); ?>
+<?php include_once('../footer.php'); ?>

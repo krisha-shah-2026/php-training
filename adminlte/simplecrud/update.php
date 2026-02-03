@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 
 // session_start();
-include 'db.php';
+include '../db.php';
 // $id = $_GET['id'];
 // $id = $_SESSION['user_id'];  
 

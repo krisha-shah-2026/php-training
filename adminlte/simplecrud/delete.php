@@ -1,4 +1,4 @@
-<?php include 'db.php';
+<?php include '../db.php';
 // $servername = "localhost";
 // $username = "root";
 // $password = "admin123";

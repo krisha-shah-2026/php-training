@@ -23,9 +23,9 @@ session_start();
 
 include 'db.php';
 ?>
-<?php include_once('includes/header.php'); ?>
+<?php include_once('../header.php'); ?>
 
-  <?php include_once('includes/sidebar.php'); 
+  <?php include_once('../sidebar.php'); 
 
   $id = $_GET['id'];
 
@@ -132,4 +132,4 @@ if (!empty($profileImage)) {
     <!-- <input type="submit" name="update" value="Update"> -->
 
  
-<?php include_once('includes/footer.php'); ?>
+<?php include_once('../footer.php'); ?>

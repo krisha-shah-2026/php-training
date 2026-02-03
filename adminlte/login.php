@@ -26,7 +26,7 @@ session_start();
 </div>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="./includes/css/adminlte.css">
+    <link rel="stylesheet" href="./dist/includes/css/adminlte.css">
 </head>
 <body>
 <div class="col-md-6">
@@ -41,11 +41,10 @@ session_start();
              unset($_SESSION['registration_success']);?>
              
  <?php if ($success): ?>
- 
-    <script>
-        alert("<?= addslashes($success) ?>");
-    </script>
-<?php endif;
+    <div class="success-message" style="color: green; padding: 10px; border: 1px solid green; background-color: #e8ebe9;">
+        <?= htmlspecialchars($success) ?>
+    </div>
+<?php endif; 
    
             if (isset($_SESSION['login_error'])) {
                 echo '<div style="color:red;">'.$_SESSION['login_error'].'</div>';

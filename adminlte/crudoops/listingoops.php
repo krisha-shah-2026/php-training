@@ -1,9 +1,9 @@
 <?php
 
-require_once'conectivityoops.php';
-
-include_once('includes/header.php'); 
-include_once('includes/sidebar.php'); ?>
+require_once 'conectivityoops.php';
+  include 'auth.php';
+include_once('../header.php'); 
+include_once('../sidebar.php'); ?>
  <div class="card mb-4">
                   <div class="card-header"><h3 class="card-title">Employee Table</h3></div>
                   <!-- /.card-header -->
@@ -92,4 +92,4 @@ if (!empty($row['profile_image']) && file_exists("uploads/" . $row['profile_imag
                 </div>
                 <!-- /.card -->
 
-<?php include_once('includes/footer.php'); ?>
+<?php include_once('../footer.php'); ?>

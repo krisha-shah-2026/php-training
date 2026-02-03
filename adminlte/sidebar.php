@@ -6,7 +6,7 @@
           <a href="./index.html" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="./dist/includes/assets/img/AdminLTELogo.png"
+              src="../dist/includes/assets/img/AdminLTELogo.png"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
@@ -40,13 +40,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./listing.php" class="nav-link active">
+                    <a href="../simplecrud/listing.php" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>listing page</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./registraionpageadmin.php" class="nav-link">
+                    <a href="../simplecrud/registraionpageadmin.php" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p> Add page </p>
                     </a>
@@ -65,13 +65,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./listingoops.php" class="nav-link active">
+                    <a href="../crudoops/listingoops.php" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>listing page</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./registeroops.php" class="nav-link">
+                    <a href="../crudoops/registeroops.php" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p> Add page </p>
                     </a>

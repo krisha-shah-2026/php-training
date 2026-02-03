@@ -133,3 +133,109 @@ if (!empty($profileImage)) {
 
  
 <?php include_once('includes/footer.php'); ?>
+
+
+
+ public function update(
+        $userid,
+        $first_name,
+        $last_name,
+        $email,
+        $password,
+        $profile_image,
+        $address,
+        $phone_no,
+        $gender,
+        $hobby,
+        $country
+    ) {
+ 
+        $sql = "UPDATE users1 SET
+                    first_name = ?,
+                    last_name = ?,
+                    email = ?,
+                    password = ?,
+                    confirm_password = ?,
+                    profile_image = ?,
+                    address = ?,
+                    phone_no = ?,
+                    gender = ?,
+                    hobbies = ?,
+                    country = ?
+                WHERE user_id = ?";
+ 
+        $stmt = $this->conn->prepare($sql);
+ 
+        if (!$stmt) {
+            return false;
+        }
+ 
+        $stmt->bind_param(
+            "sssssssssssi",
+            $first_name,
+            $last_name,
+            $email,
+            $password,
+            $confirm_password,
+            $profile_image,
+            $address,
+            $phone_no,
+            $gender,
+            $hobby,
+            $country,
+            $userid
+        );
+ 
+        $result = $stmt->execute();
+        $stmt->close();
+ 
+        return $result;
+    }
+
+
+
+    public function update(
+        $userid,
+        $first_name,
+        $last_name,
+        $email,
+        $password,
+        $profile_image,
+        $address,
+        $phone_no,
+        $gender,
+        $hobby,
+        $country
+    ) {
+
+        $conn = $this->dbh;
+
+        if ($password !== null) {
+            $sql = "UPDATE users1 SET
+                        first_name='$first_name',
+                        last_name='$last_name',
+                        email='$email',
+                        password='$password',
+                        profile_image='$profile_image',
+                        address='$address',
+                        phone_no='$phone_no',
+                        gender='$gender',
+                        hobby='$hobby',
+                        country='$country'
+                    WHERE user_id='$userid'";
+        } else {
+            $sql = "UPDATE users1 SET
+                        first_name='$first_name',
+                        last_name='$last_name',
+                        email='$email',
+                        profile_image='$profile_image',
+                        address='$address',
+                        phone_no='$phone_no',
+                        gender='$gender',
+                        hobby='$hobby',
+                        country='$country'
+                    WHERE user_id='$userid'";
+        }
+
+        return mysqli_query($conn, $sql);
+    }

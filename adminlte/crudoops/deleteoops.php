@@ -1,5 +1,5 @@
 
-<?php require_once'conectivityoops.php';
+<?php require_once 'conectivityoops.php';
 ?>
 
 <?php //Deletion
@@ -13,7 +13,7 @@ $deletedata=new DB_con();
 $sql=$deletedata->delete($id);
 if($sql)
 {
-echo "<script>alert('Record deleted successfully');</script>";
+// echo "<script>alert('Record deleted successfully');</script>";
 echo "<script>window.location.href='listingoops.php'</script>";
 }
     }

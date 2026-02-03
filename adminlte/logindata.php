@@ -63,7 +63,7 @@ $_SESSION['user_email'] = $user['email'];
   unset($_SESSION['old']);
     unset($_SESSION['login_error']);
 
-header("Location: samplepage.php"); 
+header("Location: ./simplecrud/samplepage.php"); 
 exit;
 }
     // if (empty($errors)) {
