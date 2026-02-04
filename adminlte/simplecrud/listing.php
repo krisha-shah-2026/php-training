@@ -1,7 +1,7 @@
 
 <?php 
 session_start();
- include 'auth.php';
+include 'auth.php';
 include 'db.php';
 include_once('../header.php'); 
 include_once('../sidebar.php'); ?>

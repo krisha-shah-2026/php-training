@@ -111,11 +111,24 @@ if (isset($_POST['update'])) {
  
     if (!empty($errors)) {
         $_SESSION['registration_error'] = $errors;
-        header("Location: editoops.php");
+       header("Location: editoops.php?id=" . $userid);
         exit;
     }
+//  if (!empty($errors)) {
+//     $_SESSION['registration_error'] = $errors;
+//     $_SESSION['old_values'] = $_POST;   
  
-    
+//     header("Location: editoops.php?id=" . $userid);
+//     exit;
+// }
+   
+
+
+// $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ? AND user_id != ?");
+// $stmt->bind_param("si", $email, $id);
+// $stmt->execute();
+// $result = $stmt->get_result();
+
  
     $result = $updatedata->update(
         $userid,

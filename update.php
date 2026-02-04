@@ -121,5 +121,5 @@ if (!empty($new_image)) {
 
  ?>
  <script type="text/javascript"> 
-   window.location.href = 'http://localhost/php-training/process_form.php';
+   window.location.href = 'http://localhost/php-training/listing.php';
     </script>

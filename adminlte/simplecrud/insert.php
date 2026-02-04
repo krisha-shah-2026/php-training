@@ -36,12 +36,11 @@ $_SESSION['old'] = [
         'first_name' => $first_name,
         'last_name'  => $last_name,
         'email'      => $email,
- 'profile_image' => $img_name,
+        'profile_image' => $img_name,
         'address'    => $address,
-
-        'phone_no'   => $phone_no,
+         'phone_no'   => $phone_no,
         'gender'     => $gender,
-    'hobbies'    => $hobby,   
+        'hobbies'    => $hobby,   
         'country'    => $country
 ]; 
 function emailExists($email) {
@@ -55,52 +54,6 @@ function emailExists($email) {
     return $stmt->num_rows > 0;
 
 }    
-
-// if(empty($first_name))
-//  {
-//   $error = "enter your first name !";
-
-//  } else if(empty($last_name))
-//  {
-//   $error = "enter your last name !";
- 
-//  } else if(empty($email))
-//  {
-//   $error = "enter your email !";
- 
-// } elseif (emailExists($email)) {
-//    $error = "Email already registered!";}
-// elseif (empty($password)) {
-//     $error = "Enter your password!";
-    
-    
-// }else if (empty($img_name)) {
-
-//     $error = "Please select image file !";
-// } 
-//   else if (empty($address)) {
-//   $error = "enter your address !";
-//  }   else if (empty($phone_no)) {
-//     $error = "Enter your phone no.";
-// } elseif (strlen($phone_no) != 10) {
-//     $error = "Phone no. must be 10 digits";
-// } 
-
-
-//  else if (empty($gender)) {
-//   $error = "enter your gender !";
-//  }  else if (empty($hobby)) {
-//   $error = "enter your hobby !";
-//  } else  if (empty($country)) {
-//   $error = "enter your country !";
-  
-//  }     
- 
-//  if (!empty($error)) {
-//         $_SESSION['registration_error'] = $error;
-//       header('Location: registraionpageadmin.php');
-//      exit();
-// }
 
 if (empty($first_name)) {
     $errors['first_name'] = "Enter your first name!";
@@ -162,49 +115,13 @@ if (empty($country)) {
  }
 
 
-
-
-// $sql = "SELECT email FROM users WHERE email = ?";
-// $stmt = mysqli_prepare($conn, $sql);
-
-// if ($stmt) {
-//     mysqli_stmt_bind_param($stmt, "s", $email);
-//     mysqli_stmt_execute($stmt);
-//     mysqli_stmt_store_result($stmt);
-
-//     if (mysqli_stmt_num_rows($stmt) > 0) {
-//         $_SESSION['email_error'] = "Email already exists";
-//         header("Location: registraionpageadmin.php");
-//         exit;
-//     }
-// }
-
-
-//     if ($_POST['password'] !== $_POST['confirm_password']) {
-//     $_SESSION['error'] = "Passwords do not match";
-//      header("Location: registraionpageadmin.php");
-//     exit;
-//    }
-
-
-// if (!preg_match('/^[0-9]{10}$/', $phone_no)) {
-//     $_SESSION['phone_error'] = "Phone number must be 10 digits";
-//     header("Location: registraionpageadmin.php");
-//     exit;
-// }
-
- 
-    // $img_name = $_FILES['profile_image']['name'];
-    // $tmp_name = $_FILES['profile_image']['tmp_name'];
-    // move_uploaded_file($tmp_name, "uploads/" . $img_name);
-// INSERT INTO `user_table`(`user_id`, `first_name`, `last_name`, `email`, `password`, `confirm_password`, `profile_image`, `address`, `phone_no`, `gender`, `hobby`, `Country`) VALUES 
        $hobby   = !empty($_POST["hobbies"]) ? implode(",", $_POST['hobbies']) : null;
 
    $sql = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`, `confirm_password`, `profile_image`, `address`, `phone_no`, `gender`, `hobby`, `country`) VALUES 
 ('$first_name','$last_name','$email','$password','$confirm_password','$img_name','$address','$phone_no','$gender','$hobby','$country')";
 
     if (mysqli_query($conn, $sql)){
-     $_SESSION['profile_image'] = !empty($img_name) ? $img_name : 'default.jpg';
+    //   $_SESSION['profile_image'] = !empty($img_name) ? $img_name : 'default.jpg';
 
         echo "inserted succesfully";
     }else{echo "not inserted";}

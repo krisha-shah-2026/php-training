@@ -4,25 +4,10 @@ require_once 'conectivityoops.php';
 
 include_once('../header.php'); 
 
- include_once('../sidebar.php'); ?>
-
-<?php
+include_once('../sidebar.php'); 
 $userid = intval($_GET['id']);
 $onerecord = new DB_con();
 $sql = $onerecord->fetchonerecord($userid);
-// function get_value($field, $row) {
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST[$field])) {
-//         return htmlspecialchars($_POST[$field], ENT_QUOTES, 'UTF-8');
-//     }
-//     return isset($row[$field]) ? htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8') : '';
-// }
-// 
-if (isset($_SESSION['registration_error'])) {
-    foreach ($_SESSION['registration_error'] as $errors) {
-        echo "<p style='color:red;'>$errors</p>";
-    }
-    unset($_SESSION['registration_error']);
-}
 if($row=mysqli_fetch_array($sql))
   {
 ?>
@@ -40,11 +25,12 @@ if (isset($_SESSION['registration_error'])) {
     }
     unset($_SESSION['registration_error']);
 }?>
-<form action="updateoops.php" method="post" enctype="multipart/form-data">
-<input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
+    <form action="updateoops.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
     First Name: <input type="text" name="first_name" value="<?php echo $row['first_name']; ?>" class="form-control"><br><br>
     Last Name: <input type="text" name="last_name" value="<?php echo $row['last_name']; ?>" class="form-control"><br><br>
     Email: <input type="email" name="email" value="<?php echo $row['email']; ?>" class="form-control"><br><br>
+    
     Password: <input type="password" name="password" value="<?php echo $row['password']; ?>"  class="form-control"><br><br>
     Confirm Password: <input type="password" name="confirm_password" value="<?php echo $row['confirm_password']; ?>" class="form-control"><br><br>
  

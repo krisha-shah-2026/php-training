@@ -2,7 +2,6 @@
 session_start();
 include 'db.php';
 if (isset($_POST['submit'])) {
-
 $email = trim($_POST['email'] ?? '');
 $password = trim($_POST['password'] ?? '');
     $_SESSION['old'] = [
@@ -43,26 +42,34 @@ if ($password === '') {
     exit;
 }
 
-
-
-// if (!$user) {
-//     $_SESSION['login_error'] = "Email not registered";
-//     header("Location: login.php");
-//     exit;
-// }
-
 if ($password !== $user['password']) {
     $_SESSION['login_error'] = "Incorrect password";
     header("Location: login.php");
     exit;
 }
 
-//  SUCCESS
+
 $_SESSION['user_id'] = $user['user_id'];
 $_SESSION['user_email'] = $user['email'];
-  unset($_SESSION['old']);
-    unset($_SESSION['login_error']);
+$sql = "SELECT profile_image FROM users WHERE user_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$img_name = $result->fetch_assoc()['profile_image'];
+if(!empty($img_name)) {
+    $_SESSION['profile_image'] = $img_name;
+} else {
+    $_SESSION['profile_image'] = 'default.jpg';
+}
+//  $_SESSION['profile_image'] = !empty($img_name) ? $img_name : 'default.jpg';
+    // $_SESSION['profile_image'] = 'default.jpg'; 
 
+///   unset($_SESSION['old']);
+//     unset($_SESSION['login_error']);
+
+     unset($_SESSION['old']);
+     unset($_SESSION['login_error']);
 header("Location: ./simplecrud/samplepage.php"); 
 exit;
 }

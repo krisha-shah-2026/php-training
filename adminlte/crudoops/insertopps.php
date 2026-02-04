@@ -137,8 +137,8 @@ if (isset($_POST['submit'])) {
         // echo "<script>alert('Record inserted successfully');</script>";
         echo "<script>window.location.href='../crudoops/listingoops.php'</script>";
     } else {
-        echo "<script>alert('Something went wrong. Please try again');</script>";
-        echo "<script>window.location.href='insert.php'</script>";
+        // echo "<script>alert('Something went wrong. Please try again');</script>";
+        // echo "<script>window.location.href='insert.php'</script>";
     }unset($_SESSION['old']);
 }
 

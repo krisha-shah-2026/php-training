@@ -14,7 +14,7 @@ include '../db.php';
 // $id = $_SESSION['user_id'];  
 
 //   $errors = [];   
-
+// $editGeneralErrors = [];
 if (isset($_POST['update']))
 
    {//echo"h"; exit();
@@ -69,6 +69,17 @@ if (!empty($new_image)) {
     $hobby=implode(",",$hobbies);
     $country = $_POST['country'];
 // echo $country; exit();
+$_SESSION['old'] = [
+        'first_name' => $first_name,
+        'last_name'  => $last_name,
+        'email'      => $email,
+        'profile_image' => $profile_image,
+        'address'    => $address,
+         'phone_no'   => $phone_no,
+        'gender'     => $gender,
+        'hobbies'    => $hobby,   
+        'country'    => $country
+]; 
     $errors = [];
 
     // Validation
@@ -147,82 +158,21 @@ if (!empty($new_image)) {
     } else {
         $profile_image = $old_image;
     }
-
-    // Update database
-
-
-
+    
+    
+$editGeneralErrors = [];
 
 
+// $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ? AND user_id != ?");
+// $stmt->bind_param("si", $email, $id);
+// $stmt->execute();
+// $result = $stmt->get_result();
+if (mysqli_num_rows(mysqli_query($conn, "SELECT user_id FROM users WHERE email='$email' AND user_id != $id")) > 0) {
+         $_SESSION['editGeneralErrors']['email'] = "Email already exists.";
+         header("Location: edit.php?id=$id");
+    }
 
-    // $hobbies = $_POST['hobbies'] ?? [];
-    //  $hobby=implode(',', $hobbies);
-    // // echo" h"; exit();
-// function emailExists($email) {
-//     global $conn;
-
-//     $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
-//     $stmt->bind_param("s", $email);
-//     $stmt->execute();
-//     $stmt->store_result();
-
-//     return $stmt->num_rows > 0;
-
-// }   
-//  if (empty($first_name)) {
-//     $errors['first_name'] = "Enter your first name!";
-// }
-
- //if (empty($last_name)) {
-  // $errors['last_name'] = "Enter your last name!";
-// }
-
-// if (empty($email)) {
-//     $errors['email'] = "Enter your email!";
-// } 
-// if (empty($password)) { $errors['password'] = "Enter your password!"; }
-//  elseif (strlen($password) < 8) { 
-//     $errors['password'] = "Password must be at least 8 characters"; }
-
-// if (empty($confirm_password)) {
-//     $errors['confirm_password'] = "Enter confirm password!";
-// } elseif ($password !== $confirm_password) {
-//     $errors['confirm_password'] = "Passwords do not match";
-// }
-
-// if (empty($new_image) && empty($old_image)) {
-//     $errors['image'] = "Please select image file!";
-// }
-
-// if (empty($address)) {
-//     $errors['address'] = "Enter your address!";
-// }
-
-// if (empty($phone_no)) {
-//     $errors['phone_no'] = "Enter phone number!";
-// } elseif (strlen($phone_no) != 10) {
-//     $errors['phone_no'] = "Phone number must be 10 digits";
-// }
-
-// if (empty($gender)) {
-//     $errors['gender'] = "Select gender!";
-// }
-
-// if (empty($hobby)) {
-//     $errors['hobby'] = "Enter hobby!";
-// }
-
-// if (empty($country)) {
-//     $errors['country'] = "Select country!";
-// }
-
-
-//  if (!empty($errors)) {
-//      $_SESSION['registration_error'] = $errors;
-//     header("Location: edit.php");
-//     exit;
-//  }
-
+   
 
 
 
@@ -244,7 +194,7 @@ if (!empty($new_image)) {
 
 
 $_SESSION['profile_image'] = !empty($profile_image) ? $profile_image : 'default.jpg';
-
+  unset($_SESSION['old']);
    header("Location: listing.php");
 exit;
 

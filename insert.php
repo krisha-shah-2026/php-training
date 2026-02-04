@@ -32,4 +32,4 @@ if (isset($_POST['submit'])) {
     }else{echo "not inserted";}
 
 }
-header("Location: process_form.php");
+header("Location: listing.php");

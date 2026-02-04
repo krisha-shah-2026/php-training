@@ -1,72 +1,58 @@
 <?php 
-  session_start();
-    include 'auth.php';
-   include '../db.php';
-  include_once('../header.php');
-  include_once('../sidebar.php'); ?>
-   
-
-            <head>
-              <style>
+session_start();
+include 'auth.php';
+include '../db.php';
+include_once('../header.php');
+include_once('../sidebar.php'); ?>
+    <head>
+    <style>
                
   .text-danger {
     color: red;
     font-size: 14px;
   }
 </style>
-
-
- <!--begin::Horizontal Form-->
-                <div class="card card-warning card-outline mb-4">
+               <div class="card card-warning card-outline mb-4">
                   <!--begin::Header-->
                   <div class="card-header"><div class="card-title">Employee registration Form</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-<body><?php
-if (isset($_SESSION['registration_error'])) {
+<body>
+    <?php
+    if (isset($_SESSION['registration_error'])) {
     foreach ($_SESSION['registration_error'] as $errors) {
         echo "<p style='color:red;'>$errors</p>";
     }
     unset($_SESSION['registration_error']);
 }?>
 
-<form action="insert.php" method="POST" enctype="multipart/form-data">
-
+    <form action="insert.php" method="POST" enctype="multipart/form-data">
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" class="form-control" value="<?= $_SESSION['old']['first_name'] ?? '' ?>">
-<br><br>
-
-
-   
+    <br><br>
     <label for="last_name">Last Name:</label>
     <input type="text" id="last_name" name="last_name" class="form-control" value="<?= $_SESSION['old']['last_name'] ?? '' ?>">
-<br><br>
-
-   
+    <br><br>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" class="form-control" value="<?= $_SESSION['old']['email'] ?? ''?> ">
-<br><br>
-<?php if (isset($_SESSION['email_error'])) { ?>
+    <br><br>
+    <?php if (isset($_SESSION['email_error'])) { ?>
     <small class="text-danger">
         <?php echo $_SESSION['email_error']; ?>
     </small>
-<?php unset($_SESSION['email_error']); } ?>
-
-
-  
-    <label for="password">Password:</label>
+    <?php unset($_SESSION['email_error']); } ?>
+     <label for="password">Password:</label>
     <input type="password" id="password" name="password" class="form-control"><br><br>
-<?php if (isset($errors['password'])) { ?>
+    <?php if (isset($errors['password'])) { ?>
     <small class="text-danger"><?= $errors['password']; ?></small>
-<?php } ?>
-
-    <label for="confirm_password">Confirm Password:</label>
+    <?php } ?>
+     <label for="confirm_password">Confirm Password:</label>
     <input type="password" id="confirm_password" name="confirm_password" class="form-control"><br><br>
-<?php if (isset($_SESSION['registration_error']['password'])) { ?>
+    <?php if (isset($_SESSION['registration_error']['password'])) { ?>
     <span style="color:red">
         <?= $_SESSION['registration_error']['password']; ?>
     </span>
-<?php } ?>
+    <?php } ?>
 
    <!-- <?php if (isset($_SESSION['error'])) {
     echo '<p style="color:red;">' . $_SESSION['error'] . '</p>';
@@ -150,45 +136,4 @@ if (isset($_SESSION['registration_error'])) {
 </body>
 
 
-<!-- <script>
-      function validateForm() {
-  let x = document.forms["myform"]["fname"].value;
-  if (x == "") {
-    alert("first Name must be filled out");
-    return false;
-  }
-
-
-
-
-      
-        const password = document.getElementById('password').value;
-        const confirm_password = document.getElementById('confirm_password').value;
-        const errorMessage = document.getElementById('error-message');
-
-        // Reset error messages
-        errorMessage.textContent = '';
-        errorMessage.style.display = 'none';
-
-        
-       
-        if (password.trim() === '') {
-            errorMessage.textContent = 'Password cannot be empty or contain only spaces.';
-            errorMessage.style.display = 'block';
-            return false;
-        }
-
-      
-        if (password !== confirm_password) {
-            errorMessage.textContent = 'Passwords do not match.';
-            errorMessage.style.display = 'block';
-            return false;
-        }
-        return true;
-    }
-
-
-
-} -->
-<!-- </script> -->
 <?php include_once('../footer.php'); ?>

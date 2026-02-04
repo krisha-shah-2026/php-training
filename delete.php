@@ -16,5 +16,5 @@
 $id = $_GET['id'];
  
 mysqli_query($conn, "DELETE FROM user_table WHERE user_id=$id");
-header("Location: process_form.php");
+header("Location: listing.php");
 ?>

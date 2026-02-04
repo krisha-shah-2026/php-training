@@ -1,11 +1,12 @@
-<?php
+ <?php
 
  $upload_dir = '/php-training/uploads/';
 
 $profileImg = !empty($_SESSION['profile_image'])
     ? '/php-training/uploads/' . $_SESSION['profile_image']
     : '/php-training/uploads/default.jpg';
-?>  
+?>
+
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -173,7 +174,8 @@ $profileImg = !empty($_SESSION['profile_image'])
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
-                <p><img
+                <p>
+                <img
               src="<?= htmlspecialchars($profileImg) ?>"
                class="rounded-circle shadow"  alt="User Image" style="width:20px; height:20px; object-fit:cover;"
              /></p>
