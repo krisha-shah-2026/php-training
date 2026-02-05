@@ -82,11 +82,18 @@ if (isset($_SESSION['editGeneralErrors']['email'])): ?>
    <?php $hobbies = $_POST['hobbies'] ?? [];
     $hobby=implode(",",$hobbies);?> 
     Country:
-    <select name="country">
-        <option <?php if($sql2['country']=="India") echo "selected"; ?>>INDIA</option>
-        <option <?php if($sql2['country']=="USA") echo "selected"; ?>>usa</option>
-        <option <?php if($sql2['country']=="UK") echo "selected"; ?>>UK</option>
-    </select><br><br>
+   
+  
+      <?php 
+$selectedCountry = $_SESSION['old']['country'] ?? $sql2['country'] ?? '';
+?>
+<select name="country">
+    <!-- Changed 'USA' to 'usa' -->
+    <option value="India" <?php echo ($selectedCountry == 'India') ? 'selected' : ''; ?>>INDIA</option>
+    <option value="usa" <?php echo ($selectedCountry == 'usa') ? 'selected' : ''; ?>>usa</option>
+    <!-- Changed 'UK' to 'uk' -->
+    <option value="uk" <?php echo ($selectedCountry == 'uk') ? 'selected' : ''; ?>>UK</option>
+</select>
                      <div class="card-footer">
                       
                       <!-- <button type="submit" class="btn btn-warning"  name="submit" value="register">register</button>  -->

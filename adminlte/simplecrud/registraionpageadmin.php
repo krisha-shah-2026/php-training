@@ -110,9 +110,9 @@ include_once('../sidebar.php'); ?>
     <label for="country">Country:</label>
     <select id="country" name="country">
         <option value="">Select a country</option>
-        <option value="usa"<?= ($_SESSION['old']['country'] ?? '') == 'usa' ? 'selected' : '' ?>>USA</option>
-        <option value="canada"<?= ($_SESSION['old']['country'] ?? '') == 'canada' ? 'selected' : '' ?>>Canada</option>
-        <option value="india"<?= ($_SESSION['old']['country'] ?? '') == 'India' ? 'selected' : '' ?>>India</option>
+        <option value="india"<?= ($_SESSION['old']['country'] ?? '') == 'india' ? 'selected' : '' ?>>USA</option>
+        <option value="usa"<?= ($_SESSION['old']['country'] ?? '') == 'usa' ? 'selected' : '' ?>>Canada</option>
+        <option value="uk"<?= ($_SESSION['old']['country'] ?? '') == 'uk' ? 'selected' : '' ?>>India</option>
  
     </select><br><br>
        <!--begin::Body-->

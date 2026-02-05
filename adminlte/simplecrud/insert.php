@@ -40,7 +40,7 @@ $_SESSION['old'] = [
         'address'    => $address,
          'phone_no'   => $phone_no,
         'gender'     => $gender,
-        'hobbies'    => $hobby,   
+        'hobby'    => $hobby,   
         'country'    => $country
 ]; 
 function emailExists($email) {
