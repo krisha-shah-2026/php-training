@@ -70,6 +70,7 @@ if (isset($_POST['update'])) {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "Invalid email format!";
     }
+
  
     if (empty($password)) {
         $errors['password'] = "Please enter your password!";
@@ -114,20 +115,8 @@ if (isset($_POST['update'])) {
        header("Location: editoops.php?id=" . $userid);
         exit;
     }
-//  if (!empty($errors)) {
-//     $_SESSION['registration_error'] = $errors;
-//     $_SESSION['old_values'] = $_POST;   
- 
-//     header("Location: editoops.php?id=" . $userid);
-//     exit;
-// }
-   
 
 
-// $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ? AND user_id != ?");
-// $stmt->bind_param("si", $email, $id);
-// $stmt->execute();
-// $result = $stmt->get_result();
 
  
     $result = $updatedata->update(
@@ -152,6 +141,7 @@ if (isset($_POST['update'])) {
         echo "<script>alert('Update Failed');</script>";
     }
 }
+
 ?>
  
 

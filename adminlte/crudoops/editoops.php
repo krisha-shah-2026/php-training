@@ -25,6 +25,7 @@ if (isset($_SESSION['registration_error'])) {
     }
     unset($_SESSION['registration_error']);
 }?>
+
     <form action="updateoops.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
     First Name: <input type="text" name="first_name" value="<?php echo $row['first_name']; ?>" class="form-control"><br><br>

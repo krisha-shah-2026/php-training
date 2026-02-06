@@ -92,67 +92,16 @@ class DB_con
     
     return $result;
 }
-    // public function update(
-    //     $user_id,
-    //     $first_name,
-    //     $last_name,
-    //     $email,
-    //     $password,
-    //     $confirm_password,
-    //     $profile_image,
-    //     $address,
-    //     $phone_no,
-    //     $gender,
-    //     $hobby,
-    //     $country
-    // ) {
- 
-    //     $sql = "UPDATE users1 SET
-    //                 first_name = ?,
-    //                 last_name = ?,
-    //                 email = ?,
-    //                 password = ?,
-    //                 confirm_password = ?,
-    //                 profile_image = ?,
-    //                 address = ?,
-    //                 phone_no = ?,
-    //                 gender = ?,
-    //                 hobbies = ?,
-    //                 country = ?
-    //             WHERE user_id = ?";
- 
-    //     $stmt = $this->conn->prepare($sql);
- 
-    //     if (!$stmt) {
-    //         return false;
-    //     }
- 
-    //     $stmt->bind_param(
-    //         "sssssssssssi",
-    //         $first_name,
-    //         $last_name,
-    //         $email,
-    //         $password,
-    //         $confirm_password,
-    //         $profile_image,
-    //         $address,
-    //         $phone_no,
-    //         $gender,
-    //         $hobby,
-    //         $country,
-    //         $userid
-    //     );
- 
-    //     $result = $stmt->execute();
-    //     $stmt->close();
- 
-    //     return $result;
-    // }
-// public function fetchonerecord($id)
-// 	{
-// 	$oneresult=mysqli_query($this->dbh,"select * from users1 where user_id=$id");
-// 	return $oneresult;
-// 	}
+ public function isEmailTaken($email, $currentUserId) {
+        $stmt = $this->db->prepare("SELECT user_id FROM users WHERE email = ? AND user_id != ?");
+        $stmt->bind_param("si", $email, $currentUserId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->num_rows > 0;
+    }
+    
+   
 
     public function fetchonerecord($id) {
         $id = intval($id);  
@@ -160,23 +109,6 @@ class DB_con
         $sql = "SELECT * FROM users1 WHERE user_id = $id";
         return mysqli_query($this->dbh, $sql);
     }
-// public function update($first_name,$last_name,$email,$password,$confirm_password,$profile_image,$address,$phone_no,$gender,$hobby,$country)
-	// {
-// 	$sql= "UPDATE  users1 set    
-//      first_name = '$first_name', 
-//     last_name = '$last_name', 
-//     email = '$email', 
-//     password = '$password', 
-//     confirm_password = '$confirm_password', 
-//     address = '$address', 
-//     phone_no = '$phone_no', 
-//     gender = '$gender', 
-//     profile_image = '$profile_image',
-//     hobby = '$hobby', 
-//     country = '$country'
-//   where user_id='$userid' ";
-//     return mysqli_query($this->dbh, $sql);
-// 	}class DB_con {
 
 
 
