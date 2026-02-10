@@ -13,7 +13,7 @@ include_once('../sidebar.php'); ?>
  <button id="openPopup" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#userModal">
     Add User
 </button>
-
+ <script src="script.js"></script>
 <!-- The Modal -->
 <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
@@ -23,22 +23,32 @@ include_once('../sidebar.php'); ?>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="userForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="myForm" action="ajaxAddUser.php"  method="POST" enctype="multipart/form-data">
           <div class="row mb-3">
-            <div class="col"><input type="text" class="form-control" placeholder="First Name"></div>
-            <div class="col"><input type="text" class="form-control" placeholder="Last Name"></div>
+            <div class="col"><input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name"></div>
+            <div class="col"><input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name"></div>
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Email Address">
+            <input type="email" id="email" name="email"class="form-control" placeholder="Email Address">
           </div>
           <div class="row mb-3">
-            <div class="col"><input type="password" class="form-control" placeholder="Password"></div>
-            <div class="col"><input type="password" class="form-control" placeholder="Confirm Password"></div>
+            <div class="col"><input type="password" id="password" name="password" class="form-control" placeholder="Password"></div>
+            <div class="col"><input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm Password"></div>
           </div>
           <div class="mb-3">
             <label class="form-label">Profile Image</label>
-            <input type="file" class="form-control" accept="image/*">
+            <input type="file" id="profile_image" name="profile_image"  class="form-control" accept="image/*">
           </div>
+          <div class="row mb-3">
+            <label>Address</label>
+  <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
+</div>
+ 
+<!-- Phone Number -->
+  <div class="row mb-3">
+  <label>Phone Number</label>
+  <input type="text" id="phone_no" name="phone_no" class="form-control" placeholder="Enter Phone Number">
+</div>
           <div class="mb-3">
            <label>Gender:</label><br>
     <input type="radio" id="male" name="gender"  value="male" <?= (($_SESSION['old']['gender'] ?? '') === 'male') ? 'checked' : '' ?>>
@@ -74,101 +84,79 @@ include_once('../sidebar.php'); ?>
         <option value="uk"<?= ($_SESSION['old']['country'] ?? '') == 'uk' ? 'selected' : '' ?>>India</option>
  
     </select><br><br>
-          </div>
+         
           <button type="submit" class="btn btn-primary w-100" value="submit"> Add User</button>
+           </div>  
         </form>
-      </div>
-    </div>
-  </div>
-</div><div id="editModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; border:1px solid #ccc; z-index:1000;">
-    <div id="modalContent"></div>
-    <button onclick="closeModal()">Close</button>
-</div><script>
-function openEditModal(userId) {
-    
-    document.getElementById('editModal').style.display = 'block';
-    
-    fetch('edit.php?id=' + userId)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('modalContent').innerHTML = data;
-        });
+       
+       
+      <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Confirm Password</th>
+            <th>Image</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Hobby</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+ 
+    <!-- AJAX will load data here -->
+    <tbody id="userTable">
+    <?php
+     $sql = "SELECT * FROM userajax ORDER BY user_id DESC";
+$result = $conn->query($sql);
+ 
+if($result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+$id = $row['user_id'];
+
+if (!empty($row['profile_image']) && file_exists("uploads/" . $row['profile_image'])) {
+    $image_src = "uploads/" . $row['profile_image'];
+} else {
+    $image_src = "uploads/default.png";
 }
-
-function closeModal() {
-    document.getElementById('editModal').style.display = 'none';
-}</script>
-               
-                    
-                  <tr>
-                          <th style="width: 10px" scope="col">id</th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Password</th>
-                          <th scope="col">Confirm Password</th>
-                          <th scope="col">Profile Image</th>
-                          <th scope="col">Address</th>
-                          <th scope="col">Phone No</th>
-                          <th scope="col">Gender</th>
-                          <th scope="col">Hobby</th>
-                          <th scope="col">Country</th>
-                        
-                        </tr>
-                      </thead>
-  <?php
-    $sql1 = "SELECT * FROM userajax";
-    $result = $conn->query($sql1);
-
-    // Check if any rows were returned
-    if ($result->num_rows > 0) {
-      // Loop through each row of data
-      while($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['user_id']) . "</td>";
+echo "<tr>
+    <td>{$row['user_id']}</td>
+    <td>{$row['first_name']}</td>
+    <td>{$row['last_name']}</td>
+    <td>{$row['email']}</td>
+    <td>{$row['password']}</td>
+    <td>{$row['confirm_password']}</td>
+    <td><img src='$image_src' width='50' height='50'></td>
+    <td>{$row['address']}</td>
+    <td>{$row['phone_no']}</td>
+    <td>{$row['gender']}</td>
+    <td>{$row['hobby']}</td>
+    <td>{$row['country']}</td>
+    <td>
+        <button id='openEditPopup' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#editUserModal' data-id='" . $row['user_id'] . "'>Edit User</button>
         
-        echo "<td>" . htmlspecialchars($row['first_name']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['last_name']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['password']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['confirm_password']) . "</td>";
-        
+        <button class='btn btn-danger btn-sm' onclick=\"if(confirm('Do you really want to delete this user?')) deleteUser(" . $row['user_id'] . ");\">Delete</button>
+    </td>
 
-        $image_path = "/php-training/uploads/" . $row['profile_image'];
-
-     $image_src = '/php-training/uploads/' . htmlspecialchars($row['profile_image']);
-        echo "<td><img src='" . $image_src . "' alt='Profile Image' width='50' height='50'></td>";
-    
-
-        echo "<td>" . htmlspecialchars($row['address']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['phone_no']) . "</td>";
+</tr>";
+ 
       
-         echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['hobby']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['country']) . "</td>";
-        // echo 'd';
-        // --- MODIFIED CODE FOR ACTION BUTTONS ---
-        echo "<td>";
-        // Pass the user ID to the edit and delete pages using a GET parameter 'id'
-
-        echo '<button class="button" onclick="openEditModal(' . htmlspecialchars($row['user_id']) . ')">Edit</button>';
-echo ' ';
-      echo "<a href=\"delete.php?id=" . htmlspecialchars($row['user_id']) . "\" class=\"button\" onclick=\"return confirm('Do you really want to delete?');\">Delete</a>";
-        echo "</td>";
-       
-       
-        echo "</tr>";
-      }
-    } else {
-      echo "<tr><td colspan='10'>No users found</td></tr>";
     }
-    
-    ?>
-  </tbody>
-                      </table>
+}else{
+    echo "<tr><td colspan='12'>No data found</td></tr>";
+}
+?>
+</tbody>
+</tabel>
+                  </div>
+  
                   </div>
                   <!-- /.card-body -->
-                </div>
+</div>
                 <!-- /.card -->
                  <!-- Popup Background
 
