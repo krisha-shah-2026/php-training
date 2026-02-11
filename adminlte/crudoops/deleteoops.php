@@ -2,13 +2,12 @@
 <?php require_once 'conectivityoops.php';
 ?>
 
-<?php //Deletion
+<?php 
 if(isset($_GET['id']))
     {
-// Geeting deletion row id
+
 $id = $_GET['id'];
 
-// $rid=$_GET['del'];
 $deletedata=new DB_con();
 $sql=$deletedata->delete($id);
 if($sql)
