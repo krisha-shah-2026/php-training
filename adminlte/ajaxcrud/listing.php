@@ -8,6 +8,7 @@ include_once('../sidebar.php'); ?>
  <div class="card mb-4">
                   <div class="card-header"><h3 class="card-title">Employee Table</h3></div>
 <div class="card-body">
+  <div id="msgBox" style="display:none; padding:10px; margin-bottom:10px; border-radius:5px;"></div>
                     <table class="table table-bordered" role="table">
  <button id="openPopup" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#userModal">
     Add User
@@ -22,7 +23,7 @@ include_once('../sidebar.php'); ?>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
   
- <div id="msgBox" class="alert alert-success" style="display:none;"></div>
+ 
  
  
 <form id="myForm" enctype="multipart/form-data">
@@ -30,39 +31,46 @@ include_once('../sidebar.php'); ?>
 <div class="row mb-3">
   <div class="col">
  <input type="hidden" id="user_id" name="user_id">
+  <label for="first_name">First Name:</label>
     <input type="text" id="firstName" name="first_name" class="form-control" placeholder="First Name">
     <small class="text-danger error" id="firstNameError"></small>
   </div>
  
   <div class="col">
+     <label for="last_name">last  Name:</label>
     <input type="text" id="lastName" name="last_name" class="form-control" placeholder="Last Name">
     <small class="text-danger error" id="lastNameError"></small>
   </div>
 </div>
  
 <div class="mb-3">
-  <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+   <label for="email">Email</label>
+  <input type="text" id="email" name="email" class="form-control" placeholder="email">
   <small class="text-danger error" id="emailError"></small>
 </div>
  
 <div class="row mb-3">
   <div class="col">
+    <label for="password">Password:</label>
     <input type="password" id="password" name="password" class="form-control" placeholder="Password">
     <small class="text-danger error" id="passwordError"></small>
   </div>
  
   <div class="col">
+     <label for="confirm_password">Confirm Password:</label>
+   
     <input type="password" id="confirmPassword" name="confirm_password" class="form-control" placeholder="Confirm Password">
     <small class="text-danger error" id="confirmPasswordError"></small>
   </div>
 </div>
  
 <div class="mb-3">
+   <label for="address">Address:</label><br>  
   <input type="text" id="address" name="address" class="form-control" placeholder="Address">
   <small class="text-danger error" id="addressError"></small>
 </div>
  
-<div class="mb-3">
+<div class="mb-3"><label for="phone_no">phone no</label><br>  
   <input type="text" id="phone" name="phone_no" class="form-control" placeholder="Phone Number">
   <small class="text-danger error" id="phoneNumberError"></small>
 </div>
@@ -70,10 +78,11 @@ include_once('../sidebar.php'); ?>
 <div class="mb-3">
   <label>Profile Image</label>
       <input type="file" id="profile_image" name="profile_image" class="form-control"  accept=" uploads/*"><br><br>
+      <!-- <img id="oldImagePreview" src="" width="80" style="margin-top:10px; display:none;"> -->
+       <!-- <input type="hidden" name="old_image" id="oldImage"> -->
   <small class="text-danger error" id="imageError"></small>
  
 </div>
- 
 <div class="mb-3">
   <label>Gender</label><br>
   <input type="radio" name="gender" value="male"> Male
@@ -113,8 +122,7 @@ include_once('../sidebar.php'); ?>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
-                <th>Password</th>
-                <th>Confirm Password</th>
+               
                 <th>Image</th>
                 <th>Address</th>
                 <th>Phone</th>

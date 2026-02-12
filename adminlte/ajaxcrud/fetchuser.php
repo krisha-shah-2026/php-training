@@ -11,8 +11,7 @@ while($row = mysqli_fetch_assoc($result)){
     <td><?= $row['first_name'] ?></td>
     <td><?= $row['last_name'] ?></td>
     <td><?= $row['email'] ?></td>
-    <td><?= $row['password'] ?></td>
-    <td><?= $row['confirm_password'] ?></td>
+   
     <td><img src="uploads/<?= $row['profile_image'] ?>" width="50"></td>
     <td><?= $row['address'] ?></td>
     <td><?= $row['phone_no'] ?></td>

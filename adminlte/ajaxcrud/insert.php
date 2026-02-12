@@ -29,7 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['hobbies'])){
         $hobby = implode(",", $_POST['hobbies']);
     }
- 
+
+    
 
 $filename = "";
  

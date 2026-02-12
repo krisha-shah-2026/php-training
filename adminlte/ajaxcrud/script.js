@@ -2,11 +2,11 @@ $(document).ready(function(){
  
 $("#myForm").on("submit", function (e) {
  
-    e.preventDefault();
+  //  e.preventDefault();
  
     $(".error").text(""); 
     let isValid = true;
- 
+
     let firstName = $("#firstName").val().trim();
     let lastName = $("#lastName").val().trim();
     let email = $("#email").val().trim();
@@ -17,7 +17,9 @@ $("#myForm").on("submit", function (e) {
     let countryName = $("#country").val();
     let selectedGender = $("input[name='gender']:checked").val();
     let profileImage = $("#profile_image")[0].files[0];
+    let oldImagePreview = $("#oldImagePreview").attr("src");
  
+
     let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
  
     if(firstName == ""){
@@ -53,10 +55,10 @@ $("#myForm").on("submit", function (e) {
         $("#confirmPasswordError").text("Password not match");
         isValid = false;
     }
-  if(!profileImage){
-    $("#imageError").text("Profile image required");
-    isValid = false;
-}
+  if(!profileImage && oldImagePreview == ""){
+        $("#imageError").text("Profile image required");
+        isValid = false;
+    }
  
     if(address == ""){
         $("#addressError").text("Address required");
@@ -98,24 +100,31 @@ $("#myForm").on("submit", function (e) {
         processData: false,
         contentType: false,
          dataType: "json",
- 
- success: function(res) {
+    success: function(res) {
     if (res.status === "success") {
-         const modalElement = document.getElementById('userModal');
+     const modalElement = document.getElementById('userModal');
         const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
         modal.hide();
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
-       
-        $("#myForm")[0].reset(); 
-        
-      
-        localStorage.setItem("userAddedSuccess", "true"); 
-        
-     
-        loadUsers(); 
-       
-      
+        $("#myForm")[0].reset();
+    loadUsers(function(){
+ 
+            $("#msgBox")
+                .stop(true,true)
+                .removeClass()
+                .addClass("alert alert-success m-3")
+            .html('<b>User added successfully</b> <button type="button" class="btn-close float-end" onclick="$(\'#msgBox\').hide()"></button>')
+                .show();
+ 
+            $('html, body').animate({ scrollTop: 0 }, 500);
+ 
+            setTimeout(function(){
+                $("#msgBox").fadeOut();
+            }, 20000);
+ 
+        });
+ 
     }
 }
 
@@ -124,20 +133,23 @@ $("#myForm").on("submit", function (e) {
 
  
 });
-function loadUsers(){
+function loadUsers(callback){
     $.ajax({
         url: 'fetchuser.php',
         type: 'GET',
         success: function(data){
             $('#userTable tbody').html(data);
+ 
             
+            if(callback) callback();
         }
     });
 }
+ 
+
 $(document).ready(function(){
     loadUsers();
 });
-
 
 
 
@@ -163,10 +175,19 @@ $(document).on("click",".edit-btn",function(){
             $("#address").val(user.address);
             $("#phone").val(user.phone_no);
             $("#country").val(user.country);
-   
-            $("#profileimage").attr("src", user.profile_image);
-     
-            
+  
+  
+         if(user.profile_image != "")
+{
+          $("#oldImagePreview")
+        .attr("src", "uploads/" + user.profile_image)
+        .show();
+}
+        else
+{
+             $("#oldImagePreview").hide();
+}
+
         
             $("input[name='gender'][value='"+user.gender+"']").prop("checked",true);
         
@@ -180,53 +201,77 @@ $(document).on("click",".edit-btn",function(){
         }
     });
 });
+// $('#userModal').modal('hide');
+
+$('#userModal').on('hidden.bs.modal', function () {
+ 
+    $("#myForm")[0].reset();
+ 
+    $("#user_id").val("");
+    $('#oldImagePreview').attr( 'src', '' );
+    $("#submitBtn").text("Add User");
+ 
+    $(".error").text("");
+ 
+    $("#msgBox").hide();
+      
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-$(document).on('click', '.delete-btn', function () {
-    if (!confirm('Are you sure you want to delete?')) return;
-
-    var recordId = $(this).data('id');
-   
-    var clickedButton = $(this); 
-
-    $.ajax({
-        url: 'delete.php',
-        type: 'POST',
-        data: { id: recordId },
-        success: function (response) {
-            var res = JSON.parse(response);
-            if (res.success) {
-               
-                clickedButton.closest('tr').remove(); 
-
-              
-                // alert('Record deleted successfully'); 
-            } else {
-                alert('Delete failed: ' + (res.message || 'Unknown error'));
+$("#email").on("blur", function () {
+ 
+    let email = $(this).val().trim();
+ 
+    if(email != ""){
+        $.ajax({
+            url: "check-email.php",
+            type: "POST",
+            data: { email: email },
+            success: function(res){
+ 
+                if(res.trim() == "exists"){
+                    $("#emailError").text("Email already registered");
+                }else{
+                    $("#emailError").text("");
+                }
+ 
             }
-        },
-        error: function (xhr, status, error) {
-            alert('AJAX error: ' + error);
+        });
+    }
+ 
+});
+$(document).on("click",".delete-btn", function(){
+ 
+    let userId = $(this).data("id");
+    let button = $(this);
+ 
+    $.ajax({
+        url: "delete.php",
+        type: "POST",
+        data: {id: userId},
+        dataType: "json",
+ 
+        success: function(response)
+        {
+            if(response.success == true)
+            {
+                button.closest("tr").fadeOut();
+ 
+                $("#msgBox")
+                    .text("User deleted successfully")
+                    .css({"background":"#d4edda","color":"#155724"})
+                    .fadeIn().delay(2000).fadeOut();
+            }
+            else
+            {
+                $("#msgBox")
+                    .text(response.message)
+                    .css({"background":"#f8d7da","color":"#721c24"})
+                    .fadeIn().delay(2000).fadeOut();
+            }
         }
     });
+ 
 });
 
 

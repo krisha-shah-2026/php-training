@@ -16,8 +16,7 @@ include_once('../sidebar.php'); ?>
                           <th scope="col">First Name</th>
                           <th scope="col">Last Name</th>
                           <th scope="col">Email</th>
-                          <th scope="col">Password</th>
-                          <th scope="col">Confirm Password</th>
+                         
                           <th scope="col">Profile Image</th>
                           <th scope="col">Address</th>
                           <th scope="col">Phone No</th>
@@ -41,8 +40,7 @@ include_once('../sidebar.php'); ?>
         echo "<td>" . htmlspecialchars($row['first_name']) . "</td>";
         echo "<td>" . htmlspecialchars($row['last_name']) . "</td>";
         echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['password']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['confirm_password']) . "</td>";
+       
         
 
         $image_path = "/php-training/uploads/" . $row['profile_image'];

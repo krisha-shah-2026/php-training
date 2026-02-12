@@ -1,5 +1,4 @@
 <?php
-
 require_once 'conectivityoops.php';
   include 'auth.php';
 include_once('../header.php'); 
@@ -15,8 +14,7 @@ include_once('../sidebar.php'); ?>
                           <th scope="col">First Name</th>
                           <th scope="col">Last Name</th>
                           <th scope="col">Email</th>
-                          <th scope="col">Password</th>
-                          <th scope="col">Confirm Password</th>
+                         
                           <th scope="col">Profile Image</th>
                           <th scope="col">Address</th>
                           <th scope="col">Phone No</th>
@@ -37,8 +35,7 @@ while ($row = mysqli_fetch_array($sql)) {
     <td><?php echo htmlentities($row['first_name']); ?></td>
     <td><?php echo htmlentities($row['last_name']); ?></td>
     <td><?php echo htmlentities($row['email']); ?></td>
-    <td><?php echo htmlentities($row['password']); ?></td>
-     <td><?php echo htmlentities($row['confirm_password']); ?></td>
+  
 
     <td>     <?php
 if (!empty($row['profile_image']) && file_exists("uploads/" . $row['profile_image'])) {
